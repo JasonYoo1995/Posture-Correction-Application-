@@ -16,15 +16,15 @@ import com.example.bottomtab.R;
 
 public class StatisticsFragment extends Fragment {
 
-    private StatisticsViewModel notificationsViewModel;
+    private StatisticsViewModel statisticsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
+        statisticsViewModel =
                 ViewModelProviders.of(this).get(StatisticsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_statistics, container, false);
         final TextView textView = root.findViewById(R.id.text_statistics);
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        statisticsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
