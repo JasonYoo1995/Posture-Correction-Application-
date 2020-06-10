@@ -3,6 +3,7 @@ package com.example.bottomtab;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -18,14 +19,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        makeBottomNavigation();
+    }
+
+    private void makeBottomNavigation(){
+        BottomNavigationView navView = findViewById(R.id.nav_view_bottom);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_contents, R.id.navigation_home, R.id.navigation_statistics)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_bottom);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-
     }
 
     @Override
@@ -39,13 +43,18 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.bluetooth_button) {
+            makeToast("블루투스");
             return true;
         }
         if (id == R.id.option_button) {
+            makeToast("옵션");
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void makeToast(String string){
+        Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
+    }
 }
