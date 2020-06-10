@@ -3,4 +3,8 @@
 <string name="title_contents">정보 컨텐츠</string>
 <string name="title_home">자세 측정</string>
 <string name="title_statistics">통계 분석/예측</string>
+<string name="profile">프로필</string>
+<string name="device_information">기기 정보</string>
+<string name="description">사용 방법</string>
+<string name="customer_service">고객 지원</string>
 </resources>

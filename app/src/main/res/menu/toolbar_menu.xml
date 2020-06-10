@@ -5,33 +5,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
     <item
-        android:id="@+id/bluetooth_button"
+        android:id="@+id/bluetooth_menu"
         android:icon="@drawable/ic_bluetooth"
         app:showAsAction="always"
         android:title=""/>
     <item
-        android:id="@+id/option_button"
+        android:id="@+id/option_menu"
         android:icon="@drawable/ic_option"
         app:showAsAction="always"
         android:title="" />
     <item
-        android:id="@+id/profile_button"
+        android:id="@+id/profile_menu"
         app:showAsAction="never"
-        android:title="프로필"
+        android:title="@string/profile"
         />
     <item
-        android:id="@+id/device_information_button"
+        android:id="@+id/device_information_menu"
         app:showAsAction="never"
-        android:title="기기정보"
+        android:title="@string/device_information"
         />
     <item
-        android:id="@+id/how_to_do_button"
+        android:id="@+id/description_menu"
         app:showAsAction="never"
-        android:title="사용방법"
+        android:title="@string/description"
         />
     <item
-        android:id="@+id/customer_service_button"
+        android:id="@+id/customer_service_menu"
         app:showAsAction="never"
-        android:title="고객지원"
+        android:title="@string/customer_service"
         />
 </menu>
