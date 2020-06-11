@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:id="@+id/account"
-        android:title="My Account"/>
-    <item android:id="@+id/settings"
-        android:title="Settings"/>
-    <item android:id="@+id/mycart"
-        android:title="My Cart"/>
-
+    <item
+        android:id="@+id/profile_menu"
+        android:title="@string/profile"
+        />
+    <item
+        android:id="@+id/device_information_menu"
+        android:title="@string/device_information"
+        />
+    <item
+        android:id="@+id/description_menu"
+        android:title="@string/description"
+        />
+    <item
+        android:id="@+id/customer_service_menu"
+        android:title="@string/customer_service"
+        />
 </menu>

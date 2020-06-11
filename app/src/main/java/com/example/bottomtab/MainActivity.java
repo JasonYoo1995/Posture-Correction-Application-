@@ -29,32 +29,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.drawer_layout);
         makeDrawerNavigation();
         makeDialog();
+        addBottomTabEvents();
     }
 
-    private void makeDrawerNavigation(){
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout_id);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        drawerNavigationView = (NavigationView)findViewById(R.id.navigation_view);
-        drawerNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+    private void addBottomTabEvents() {
+        findViewById(R.id.contents_menu).setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                switch(id)
-                {
-                    case R.id.account:
-                        Toast.makeText(MainActivity.this, "My Account",Toast.LENGTH_SHORT).show();break;
-                    case R.id.settings:
-                        Toast.makeText(MainActivity.this, "Settings",Toast.LENGTH_SHORT).show();break;
-                    case R.id.mycart:
-                        Toast.makeText(MainActivity.this, "My Cart",Toast.LENGTH_SHORT).show();break;
-                    default:
-                        return true;
-                }
-                return true;
+            public void onClick(View v) {
+                getCurrentFocus();
+                setTitle(R.string.title_contents);
+                makeToast("정보 컨텐츠 클릭 시 이벤트 발생");
+            }
+        });
+        findViewById(R.id.home_menu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getCurrentFocus();
+                setTitle(R.string.title_home);
+                makeToast("자세 측정 클릭 시 이벤트 발생");
+            }
+        });
+        findViewById(R.id.statistics_menu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getCurrentFocus();
+                setTitle(R.string.title_statistics);
+                makeToast("통계 분석/예측 클릭 시 이벤트 발생");
             }
         });
     }
@@ -79,27 +79,6 @@ public class MainActivity extends AppCompatActivity {
             optionDialog.show();
             return true;
         }
-        if (id == R.id.profile_menu) {
-            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        if (id == R.id.device_information_menu) {
-            Intent intent = new Intent(MainActivity.this, DeviceInformationActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        if (id == R.id.description_menu) {
-            Intent intent = new Intent(MainActivity.this, DescriptionActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        if (id == R.id.customer_service_menu) {
-            Intent intent = new Intent(MainActivity.this, CustomerServiceActivity.class);
-            startActivity(intent);
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -119,6 +98,40 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 optionDialog.dismiss();
+            }
+        });
+    }
+
+    private void makeDrawerNavigation(){
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout_id);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        drawerNavigationView = (NavigationView)findViewById(R.id.navigation_view);
+        drawerNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch(id)
+                {
+                    case R.id.profile_menu:
+                        startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                        break;
+                    case R.id.device_information_menu:
+                        startActivity(new Intent(MainActivity.this, DeviceInformationActivity.class));
+                        break;
+                    case R.id.description_menu:
+                        startActivity(new Intent(MainActivity.this, DescriptionActivity.class));
+                        break;
+                    case R.id.customer_service_menu:
+                        startActivity(new Intent(MainActivity.this, CustomerServiceActivity.class));
+                        break;
+                    default:
+                        return true;
+                }
+                return true;
             }
         });
     }
