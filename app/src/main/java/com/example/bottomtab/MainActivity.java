@@ -14,12 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,10 +27,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawer_layout);
-
-        makeBottomNavigation();
+        makeDrawerNavigation();
         makeDialog();
+    }
 
+    private void makeDrawerNavigation(){
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout_id);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -61,16 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-    }
-
-    private void makeBottomNavigation(){
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_contents, R.id.navigation_home, R.id.navigation_statistics)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navView, navController);
     }
 
     @Override
