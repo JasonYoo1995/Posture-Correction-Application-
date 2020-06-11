@@ -15,6 +15,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,10 +34,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addBottomTabEvents() {
+        final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation_view);
         findViewById(R.id.contents_menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getCurrentFocus();
+                bottomNavigationView.setSelectedItemId(R.id.contents_menu);
                 setTitle(R.string.title_contents);
                 makeToast("정보 컨텐츠 클릭 시 이벤트 발생");
             }
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.home_menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getCurrentFocus();
+                bottomNavigationView.setSelectedItemId(R.id.home_menu);
                 setTitle(R.string.title_home);
                 makeToast("자세 측정 클릭 시 이벤트 발생");
             }
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.statistics_menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getCurrentFocus();
+                bottomNavigationView.setSelectedItemId(R.id.statistics_menu);
                 setTitle(R.string.title_statistics);
                 makeToast("통계 분석/예측 클릭 시 이벤트 발생");
             }
