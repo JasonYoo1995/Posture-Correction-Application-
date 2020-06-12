@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView drawerNavigationView;
     Dialog optionDialog;
+    AvatarAnimation avatarAnimation;
+    ImageView avatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +35,29 @@ public class MainActivity extends AppCompatActivity {
         makeDrawerNavigation();
         makeDialog();
         addBottomTabEvents();
+
+        avatar = findViewById(R.id.avatar_image);
+        avatarAnimation = new AvatarAnimation(this);
+        avatarAnimation.activate();
+
+    }
+
+    public void rotateAvatar(RotateAnimation rotateAnimation){
+        avatar.startAnimation(rotateAnimation);
+        rotateAnimation.reset();
     }
 
     private void addBottomTabEvents() {
         final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation_view);
+        bottomNavigationView.setSelectedItemId(R.id.home_menu);
         findViewById(R.id.contents_menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomNavigationView.setSelectedItemId(R.id.contents_menu);
                 setTitle(R.string.title_contents);
-                makeToast("정보 컨텐츠 클릭 시 이벤트 발생");
+//                makeToast("정보 컨텐츠 클릭 시 이벤트 발생");
+
+                avatarAnimation.setTarget(avatarAnimation.currentDegree-10);
             }
         });
         findViewById(R.id.home_menu).setOnClickListener(new View.OnClickListener() {
@@ -48,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 bottomNavigationView.setSelectedItemId(R.id.home_menu);
                 setTitle(R.string.title_home);
-                makeToast("자세 측정 클릭 시 이벤트 발생");
+//                makeToast("자세 측정 클릭 시 이벤트 발생");
+
             }
         });
         findViewById(R.id.statistics_menu).setOnClickListener(new View.OnClickListener() {
@@ -56,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 bottomNavigationView.setSelectedItemId(R.id.statistics_menu);
                 setTitle(R.string.title_statistics);
-                makeToast("통계 분석/예측 클릭 시 이벤트 발생");
+//                makeToast("통계 분석/예측 클릭 시 이벤트 발생");
+
+                avatarAnimation.setTarget(avatarAnimation.currentDegree+10);
             }
         });
     }
@@ -141,4 +161,5 @@ public class MainActivity extends AppCompatActivity {
     private void makeToast(String string){
         Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
     }
+
 }
