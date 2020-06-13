@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -27,11 +28,12 @@ public class MainActivity extends AppCompatActivity {
     Dialog optionDialog;
     AvatarAnimation avatarAnimation;
     ImageView avatar;
+    Fragment contentsFragment, homeFragment, statisticsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.drawer_layout);
+        setContentView(R.layout.layout_drawer);
         makeDrawerNavigation();
         makeDialog();
         addBottomTabEvents();
@@ -40,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
         avatarAnimation = new AvatarAnimation(this);
         avatarAnimation.activate();
 
+        contentsFragment = new ContentsFragment();
+        homeFragment = new HomeFragment();
+        statisticsFragment = new StatisticsFragment();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new HomeFragment()).commit();   // 실행하면 가장 먼저 보이는 화면
+        setTitle(R.string.title_home);
     }
 
     public void rotateAvatar(RotateAnimation rotateAnimation){
@@ -55,9 +64,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 bottomNavigationView.setSelectedItemId(R.id.contents_menu);
                 setTitle(R.string.title_contents);
-//                makeToast("정보 컨텐츠 클릭 시 이벤트 발생");
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, contentsFragment).commit();
 
-                avatarAnimation.setTarget(avatarAnimation.currentDegree-10);
+//                avatarAnimation.setTarget(avatarAnimation.currentDegree-10);
             }
         });
         findViewById(R.id.home_menu).setOnClickListener(new View.OnClickListener() {
@@ -65,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 bottomNavigationView.setSelectedItemId(R.id.home_menu);
                 setTitle(R.string.title_home);
-//                makeToast("자세 측정 클릭 시 이벤트 발생");
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, homeFragment).commit();
 
             }
         });
@@ -74,16 +83,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 bottomNavigationView.setSelectedItemId(R.id.statistics_menu);
                 setTitle(R.string.title_statistics);
-//                makeToast("통계 분석/예측 클릭 시 이벤트 발생");
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, statisticsFragment).commit();
 
-                avatarAnimation.setTarget(avatarAnimation.currentDegree+10);
+//                avatarAnimation.setTarget(avatarAnimation.currentDegree+10);
             }
         });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_toolbar_button, menu);
         return true;
     }
 
@@ -106,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void makeDialog(){
         optionDialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
-        optionDialog.setContentView(R.layout.option_layout);
+        optionDialog.setContentView(R.layout.layout_option);
         optionDialog.setCancelable(true);
         optionDialog.getWindow().setBackgroundDrawableResource(android.R.color.background_light);
 

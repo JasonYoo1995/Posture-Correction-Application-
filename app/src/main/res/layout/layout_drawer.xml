@@ -11,15 +11,15 @@
         android:id="@+id/top"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        layout="@layout/activity_main"
+        layout="@layout/layout_activity_main"
         />
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:menu="@menu/drawer_menu"
+        app:menu="@menu/menu_drawer_navigation"
         android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header"
+        app:headerLayout="@layout/layout_drawer_navigation_header"
         android:id="@+id/navigation_view">
 
     </com.google.android.material.navigation.NavigationView>
