@@ -8,27 +8,33 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle actionBarDrawerToggle;
-    private NavigationView drawerNavigationView;
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle actionBarDrawerToggle;
+    NavigationView drawerNavigationView;
+
+    ContentsFragment contentsFragment;
+    HomeFragment homeFragment;
+    StatisticsFragment statisticsFragment;
+
+    FragmentManager fragmentManager;
+
+//    ImageView avatar;
+//    AvatarAnimation avatarAnimation;
+
     Dialog optionDialog;
-    AvatarAnimation avatarAnimation;
-    ImageView avatar;
-    Fragment contentsFragment, homeFragment, statisticsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,24 +42,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.layout_drawer);
         makeDrawerNavigation();
         makeDialog();
-        addBottomTabEvents();
-
-        avatar = findViewById(R.id.avatar_image);
-        avatarAnimation = new AvatarAnimation(this);
-        avatarAnimation.activate();
 
         contentsFragment = new ContentsFragment();
         homeFragment = new HomeFragment();
         statisticsFragment = new StatisticsFragment();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new HomeFragment()).commit();   // 실행하면 가장 먼저 보이는 화면
+        fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container, contentsFragment);
+        fragmentTransaction.add(R.id.fragment_container, homeFragment);
+        fragmentTransaction.add(R.id.fragment_container, statisticsFragment);
+        fragmentTransaction.replace(R.id.fragment_container, homeFragment).commit(); // 실행하면 가장 먼저 보이는 화면
         setTitle(R.string.title_home);
-    }
 
-    public void rotateAvatar(RotateAnimation rotateAnimation){
-        avatar.startAnimation(rotateAnimation);
-        rotateAnimation.reset();
+        addBottomTabEvents();
     }
 
     private void addBottomTabEvents() {
@@ -64,9 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 bottomNavigationView.setSelectedItemId(R.id.contents_menu);
                 setTitle(R.string.title_contents);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, contentsFragment).commit();
-
-//                avatarAnimation.setTarget(avatarAnimation.currentDegree-10);
+                fragmentManager.beginTransaction().replace(R.id.fragment_container, contentsFragment).commit();
             }
         });
         findViewById(R.id.home_menu).setOnClickListener(new View.OnClickListener() {
@@ -74,8 +74,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 bottomNavigationView.setSelectedItemId(R.id.home_menu);
                 setTitle(R.string.title_home);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, homeFragment).commit();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container, homeFragment).commit();
 
+//                homeFragment.activate(); // 측정 시작 시 호출
+//                homeFragment.setAvatarTargetDegree(60);
             }
         });
         findViewById(R.id.statistics_menu).setOnClickListener(new View.OnClickListener() {
@@ -83,9 +85,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 bottomNavigationView.setSelectedItemId(R.id.statistics_menu);
                 setTitle(R.string.title_statistics);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, statisticsFragment).commit();
-
-//                avatarAnimation.setTarget(avatarAnimation.currentDegree+10);
+                fragmentManager.beginTransaction().replace(R.id.fragment_container, statisticsFragment).commit();
             }
         });
     }
