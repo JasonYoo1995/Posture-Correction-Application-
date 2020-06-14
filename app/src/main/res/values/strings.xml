@@ -22,7 +22,7 @@
     </string-array>
 
     <string name="string1">자세정보</string>
-    <string name="string2">스크랩한글</string>
+    <string name="string2">스크랩</string>
     <string name="string3">라운드숄더교정루틴A</string>
     <string name="string4">거북목교정법</string>
     <string name="string5">[후기]5분만에 라운드 숄더, 굽은등 펴기</string>
@@ -31,4 +31,11 @@
     <string name="string8">어깨통증도수치료2부</string>
 
     <string name="create_account">계정 생성</string>
+
+    <string name="bubble_text_state0">시작 버튼을 눌러봐!</string>
+    <string name="bubble_text_state1">가장 이상적인 자세는?</string>
+    <string name="bubble_text_state2">자세를 측정 중이야!</string>
+    <string name="button_text_state0">기록 시작</string>
+    <string name="button_text_state1">바른 자세로\n설정</string>
+    <string name="button_text_state2">기록 중지</string>
 </resources>

@@ -7,4 +7,9 @@
     <color name="colorInitialText">#27AE60</color>
     <color name="colorBlack">#000000</color>
     <color name="colorLightGray">#CCCCCC</color>
+    <color name="colorBubble">#E0D0B8</color>
+    <color name="colorButtonState0">#CC6F31</color>
+    <color name="colorButtonState1">#40D0B8</color>
+    <color name="colorButtonState2">#9850B8</color>
+
 </resources>

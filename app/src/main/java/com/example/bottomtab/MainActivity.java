@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -130,6 +131,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void onBackPressed() { // close navigation automatically when 'back' is pressed
+        // TODO Auto-generated method stub
+        if(drawerLayout.isDrawerOpen(Gravity.LEFT)){
+            drawerLayout.closeDrawer(Gravity.LEFT);
+        }
+        else{
+            super.onBackPressed();
+        }
+    }
+
     private void makeDrawerNavigation(){
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout_id);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
@@ -159,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
                     default:
                         return true;
                 }
+                drawerLayout.closeDrawer(Gravity.LEFT); // close navigation automatically when a menue is clicked
                 return true;
             }
         });
