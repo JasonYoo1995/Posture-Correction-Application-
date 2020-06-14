@@ -50,4 +50,15 @@
 
     <string name="prev">&lt; 이전</string>
     <string name="next">다음 &gt;</string>
+
+    <string name="description_title_1">부착 방법 안내</string>
+    <string name="description_title_2">부착 방법 안내</string>
+    <string name="description_title_3">부착 방법 안내</string>
+    <string name="description_title_4">부착 방법 안내</string>
+    <string name="description_title_5">측정 방법 안내</string>
+    <string name="description_title_6">측정 방법 안내</string>
+    <string name="description_title_7">자세 통계 분석</string>
+    <string name="description_title_8">자세 정보 컨텐츠</string>
+
+    <string name="title_option">경고 옵션</string>
 </resources>

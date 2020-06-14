@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         layoutParams.height = display.getHeight() - 400;
         optionDialog.getWindow().setAttributes(layoutParams);
 
-        optionDialog.findViewById(R.id.button_exit).setOnClickListener(new View.OnClickListener(){
+        optionDialog.findViewById(R.id.button_exit_option).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 optionDialog.dismiss();

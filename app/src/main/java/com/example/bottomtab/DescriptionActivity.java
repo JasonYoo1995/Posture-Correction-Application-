@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class DescriptionActivity extends Activity {
@@ -12,6 +13,8 @@ public class DescriptionActivity extends Activity {
     int page = 1;
     Button prevButton;
     Button nextButton;
+    TextView title;
+    ImageView exitButton;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,14 @@ public class DescriptionActivity extends Activity {
             }
         });
         addBottomTabEvents();
+        title = findViewById(R.id.title_description);
+        exitButton = findViewById(R.id.button_description_exit);
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void addBottomTabEvents() {
@@ -98,42 +109,50 @@ public class DescriptionActivity extends Activity {
                 this.page = 1;
                 findViewById(R.id.arrow1).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow1);
+                title.setText(R.string.description_title_1);
                 break;
             case 2:
                 this.page = 2;
                 findViewById(R.id.arrow2).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow2);
+                title.setText(R.string.description_title_2);
                 break;
             case 3:
                 this.page = 3;
                 findViewById(R.id.arrow3).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow3);
+                title.setText(R.string.description_title_3);
                 break;
             case 4:
                 this.page = 4;
                 findViewById(R.id.arrow4).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow4);
+                title.setText(R.string.description_title_4);
                 break;
             case 5:
                 this.page = 5;
                 findViewById(R.id.arrow5).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow5);
+                title.setText(R.string.description_title_5);
                 break;
             case 6:
                 this.page = 6;
                 findViewById(R.id.arrow6).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow6);
+                title.setText(R.string.description_title_6);
                 break;
             case 7:
                 this.page = 7;
                 findViewById(R.id.arrow7).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow7);
+                title.setText(R.string.description_title_7);
                 break;
             case 8:
                 nextButton.setClickable(false);
                 this.page = 8;
                 findViewById(R.id.arrow8).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow8);
+                title.setText(R.string.description_title_8);
                 break;
         }
     }

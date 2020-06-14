@@ -17,6 +17,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/arrow_container">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+                <TextView
+                    android:id="@+id/title_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/description_title_1"
+                    android:textSize="30dp"
+                    android:textStyle="italic"
+                    android:gravity="center"
+                    android:textColor="@color/colorLightBlue"
+
+                    android:layout_gravity="center"/>
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/button_description_exit"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic_exit" />
+
+            </RelativeLayout>
             <LinearLayout
                 android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
@@ -136,6 +160,7 @@
                 android:text="@string/tab_1"
                 android:textColor="@color/colorWhite"
                 android:gravity="center"
+                android:textSize="12dp"
                 android:layout_weight="1"/>
             <TextView
                 android:id="@+id/description_tab2"
@@ -144,6 +169,7 @@
                 android:text="@string/tab_2"
                 android:textColor="@color/colorWhite"
                 android:gravity="center"
+                android:textSize="12dp"
                 android:layout_weight="1"/>
             <TextView
                 android:id="@+id/description_tab3"
@@ -152,6 +178,7 @@
                 android:text="@string/tab_3"
                 android:textColor="@color/colorWhite"
                 android:gravity="center"
+                android:textSize="12dp"
                 android:layout_weight="1"/>
             <TextView
                 android:id="@+id/description_tab4"
@@ -160,6 +187,7 @@
                 android:text="@string/tab_4"
                 android:textColor="@color/colorWhite"
                 android:gravity="center"
+                android:textSize="12dp"
                 android:layout_weight="1"/>
             <TextView
                 android:id="@+id/description_tab5"
@@ -168,6 +196,7 @@
                 android:text="@string/tab_5"
                 android:textColor="@color/colorWhite"
                 android:gravity="center"
+                android:textSize="12dp"
                 android:layout_weight="1"/>
             <TextView
                 android:id="@+id/description_tab6"
@@ -176,6 +205,7 @@
                 android:text="@string/tab_6"
                 android:textColor="@color/colorWhite"
                 android:gravity="center"
+                android:textSize="12dp"
                 android:layout_weight="1"/>
             <TextView
                 android:id="@+id/description_tab7"
@@ -184,16 +214,18 @@
                 android:text="@string/tab_7"
                 android:textColor="@color/colorWhite"
                 android:gravity="center"
+                android:textSize="12dp"
                 android:layout_weight="1"/>
+
             <TextView
                 android:id="@+id/description_tab8"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="@string/tab_8"
                 android:textColor="@color/colorWhite"
-                android:gravity="center"
-                android:textSize="12dp"
-                android:layout_weight="1"/>
+                android:textSize="12dp" />
         </LinearLayout>
 
 

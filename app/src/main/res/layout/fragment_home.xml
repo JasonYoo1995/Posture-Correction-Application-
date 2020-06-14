@@ -10,7 +10,7 @@ android:background="@color/colorWhite">
         android:layout_height="0dp"
         android:layout_weight="0.2">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/battery_image"
             android:layout_alignParentLeft="true"
             android:layout_width="40dp"
