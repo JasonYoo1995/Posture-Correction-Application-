@@ -1,12 +1,34 @@
 <resources>
-<string name="app_name">CYLP</string>
-<string name="title_contents">정보 컨텐츠</string>
-<string name="title_home">자세 측정</string>
-<string name="title_statistics">통계 분석/예측</string>
-<string name="profile">프로필</string>
-<string name="device_information">기기 정보</string>
-<string name="description">사용 방법</string>
-<string name="customer_service">고객 지원</string>
-<string name="drawer_open">drawer_open</string>
-<string name="drawer_close">drawer_close</string>
+    <string name="app_name">CYLP</string>
+    <string name="title_contents">정보 컨텐츠</string>
+    <string name="title_home">자세 측정</string>
+    <string name="title_statistics">통계 분석/예측</string>
+    <string name="profile">프로필</string>
+    <string name="device_information">기기 정보</string>
+    <string name="description">사용 방법</string>
+    <string name="customer_service">고객 지원</string>
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+
+    <string name="Button1">나의기록</string>
+    <string name="Button2">타인의기록</string>
+    <string name="Button3">미래기록</string>
+
+    <string-array name="array">
+        <item>일간</item>
+        <item>주간</item>
+        <item>월간</item>
+        <item>연간</item>
+    </string-array>
+
+    <string name="string1">자세정보</string>
+    <string name="string2">스크랩한글</string>
+    <string name="string3">라운드숄더교정루틴A</string>
+    <string name="string4">거북목교정법</string>
+    <string name="string5">[후기]5분만에 라운드 숄더, 굽은등 펴기</string>
+    <string name="string6">거북목교정!페인랩이말하는교정이야기</string>
+    <string name="string7">하루10분!전신자세교정</string>
+    <string name="string8">어깨통증도수치료2부</string>
+
+    <string name="create_account">계정 생성</string>
 </resources>

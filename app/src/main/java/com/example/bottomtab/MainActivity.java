@@ -31,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
     FragmentManager fragmentManager;
 
-//    ImageView avatar;
-//    AvatarAnimation avatarAnimation;
-
     Dialog optionDialog;
 
     @Override
