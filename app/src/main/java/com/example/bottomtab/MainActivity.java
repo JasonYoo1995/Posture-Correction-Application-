@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView drawerNavigationView;
 
+    BottomNavigationView bottomNavigationView;
+
     ContentsFragment contentsFragment;
     HomeFragment homeFragment;
     StatisticsFragment statisticsFragment;
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addBottomTabEvents() {
-        final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation_view);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation_view);
         bottomNavigationView.setSelectedItemId(R.id.home_menu);
         findViewById(R.id.contents_menu).setOnClickListener(new View.OnClickListener() {
             @Override

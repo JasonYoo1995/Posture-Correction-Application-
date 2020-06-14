@@ -18,7 +18,8 @@ public class InitialActivity extends Activity {
 
         switch(action) {
             case (MotionEvent.ACTION_DOWN) :
-                startActivity(new Intent(this, LoginActivity.class));
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
                 finish();
                 return true;
             default :

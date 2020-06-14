@@ -38,4 +38,16 @@
     <string name="button_text_state0">기록 시작</string>
     <string name="button_text_state1">바른 자세로\n설정</string>
     <string name="button_text_state2">기록 중지</string>
+
+    <string name="tab_1">부착1</string>
+    <string name="tab_2">부착2</string>
+    <string name="tab_3">부착3</string>
+    <string name="tab_4">부착4</string>
+    <string name="tab_5">초기\n설정</string>
+    <string name="tab_6">경고\n설정</string>
+    <string name="tab_7">자세\n통계</string>
+    <string name="tab_8">컨텐츠</string>
+
+    <string name="prev">&lt; 이전</string>
+    <string name="next">다음 &gt;</string>
 </resources>
