@@ -1,5 +1,6 @@
 package com.example.bottomtab;
 
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 public class InstructionActivity extends Activity {
     ImageView currentArrow;
@@ -15,6 +17,7 @@ public class InstructionActivity extends Activity {
     Button nextButton;
     TextView title;
     ImageView exitButton;
+    ViewFlipper viewFlipper;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +47,8 @@ public class InstructionActivity extends Activity {
                 finish();
             }
         });
+
+        viewFlipper = findViewById(R.id.page_area);
     }
 
     private void addBottomTabEvents() {
@@ -103,6 +108,7 @@ public class InstructionActivity extends Activity {
         prevButton.setClickable(true);
         nextButton.setClickable(true);
         currentArrow.setVisibility(View.INVISIBLE);
+        viewFlipper.setDisplayedChild(page-1);
         switch (page){
             case 1:
                 prevButton.setClickable(false);
