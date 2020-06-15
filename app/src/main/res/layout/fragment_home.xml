@@ -3,6 +3,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
+
     <LinearLayout
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -108,7 +109,7 @@
                 android:text="바른 자세\n설정"
                 android:textSize="18sp"/>
             <ImageView
-                android:id="@+id/help_button"
+                android:id="@+id/help_button_in_home"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
@@ -121,6 +122,7 @@
             android:layout_weight="0.2"></LinearLayout>
 
     </LinearLayout>
+
     <ImageView
         android:id="@+id/help_zero"
         android:src="@drawable/ic_help_zero"

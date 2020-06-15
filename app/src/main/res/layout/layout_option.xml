@@ -1,31 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
-        <TextView
-            android:id="@+id/title_option"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/option_title_container"
+            android:layout_alignParentTop="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/title_option"
-            android:textSize="30dp"
-            android:textStyle="italic"
-            android:gravity="center"
-            android:textColor="@color/colorLightBlue"
-            android:layout_gravity="center"/>
+            android:layout_height="100dp">
+            <TextView
+                android:id="@+id/title_option"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/title_option"
+                android:textSize="30dp"
+                android:textStyle="italic"
+                android:gravity="center"
+                android:textColor="@color/colorLightBlue"
+                android:layout_gravity="center"/>
 
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:id="@+id/button_exit_option"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/ic_exit" />
+        </RelativeLayout>
         <ImageView
-            android:layout_alignParentRight="true"
-            android:id="@+id/button_exit_option"
+            android:id="@+id/help_button_in_option"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/ic_exit" />
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_help"/>
+    </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/help_alert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="20dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_help_alert" />
     </RelativeLayout>
-
-</LinearLayout>
+</FrameLayout>

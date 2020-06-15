@@ -21,9 +21,10 @@ public class HomeFragment extends Fragment {
     ImageView avatar;
     TextView bubbleView;
     Button measureButton;
-    ImageView helpButton;
     View rootView;
+    ImageView helpButton;
     ImageView helpBoxZero;
+
     int state = 0; // 0: stopped  1: zero in  2: measuring
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class HomeFragment extends Fragment {
                 return true;
             }
         });
-        helpButton = rootView.findViewById(R.id.help_button);
+        helpButton = rootView.findViewById(R.id.help_button_in_home);
         helpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

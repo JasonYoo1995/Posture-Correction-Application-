@@ -1,14 +1,11 @@
 package com.example.bottomtab;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,14 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
     FragmentManager fragmentManager;
 
-    Dialog optionDialog;
+    OptionDialog optionDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_drawer);
         makeDrawerNavigation();
-        makeDialog();
+        optionDialog = new OptionDialog(this);
 
         contentsFragment = new ContentsFragment();
         homeFragment = new HomeFragment();
@@ -56,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setTitle(R.string.title_home);
 
         addBottomTabEvents();
+
     }
 
     private void addBottomTabEvents() {
@@ -111,26 +109,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void makeDialog(){
-        optionDialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
-        optionDialog.setContentView(R.layout.layout_option);
-        optionDialog.setCancelable(true);
-        optionDialog.getWindow().setBackgroundDrawableResource(android.R.color.background_light);
-
-        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-        Display display = getWindowManager().getDefaultDisplay();
-        layoutParams.width = display.getWidth() - 200;
-        layoutParams.height = display.getHeight() - 400;
-        optionDialog.getWindow().setAttributes(layoutParams);
-
-        optionDialog.findViewById(R.id.button_exit_option).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                optionDialog.dismiss();
-            }
-        });
     }
 
     public void onBackPressed() { // close navigation automatically when 'back' is pressed
