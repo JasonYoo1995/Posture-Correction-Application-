@@ -1,110 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="vertical" android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/colorWhite">
-
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2">
-
-        <ImageView
-            android:id="@+id/battery_image"
-            android:layout_alignParentLeft="true"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/ic_battery" />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
         <LinearLayout
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:orientation="vertical"
-            android:layout_height="70dp"
-            android:layout_width="240dp"
-            android:layout_margin="10dip"
-            android:id="@+id/speech_bubble" >
-            <FrameLayout android:src="@drawable/shape_background_round"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/colorBubble">
-                <TextView
-                    android:id="@+id/bubble_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textSize="20dp"/>
-            </FrameLayout>
-            <ImageView android:src="@drawable/down_arrow_nor"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_horizontal" />
-        </LinearLayout>
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.1">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/avatar_image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_avatar" />
+            android:layout_height="0dp"
+            android:layout_weight="0.2">
+
+            <ImageView
+                android:id="@+id/battery_image"
+                android:layout_alignParentLeft="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_battery" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+            <LinearLayout
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:layout_height="70dp"
+                android:layout_width="240dp"
+                android:layout_margin="10dip"
+                android:id="@+id/speech_bubble" >
+                <FrameLayout android:src="@drawable/shape_background_round"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/colorBubble">
+                    <TextView
+                        android:id="@+id/bubble_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="20dp"/>
+                </FrameLayout>
+                <ImageView android:src="@drawable/down_arrow_nor"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/avatar_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_avatar" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:gravity="center"
+            android:paddingHorizontal="60dp">
+            <TextView
+                android:layout_gravity="center"
+                android:text="00:00"
+                android:textColor="@color/colorBlack"
+                android:textSize="35sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:gravity="center">
+            <View
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"/>
+            <Button
+                android:background="@drawable/shape_background_round"
+                android:id="@+id/measuring_button"
+                android:layout_height="60dp"
+                android:layout_width="120dp"
+                android:textColor="@color/colorWhite"
+                android:text="바른 자세\n설정"
+                android:textSize="18sp"/>
+            <ImageView
+                android:id="@+id/help_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_help"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"></LinearLayout>
+
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"></LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.4"
-        android:gravity="center"
-        android:paddingHorizontal="60dp">
-        <TextView
-            android:layout_gravity="center"
-            android:text="00:00"
-            android:textColor="@color/colorBlack"
-            android:textSize="35sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:gravity="center">
-        <Button
-            android:background="@drawable/shape_background_round"
-            android:id="@+id/measuring_button"
-            android:layout_height="60dp"
-            android:layout_width="120dp"
-            android:textColor="@color/colorWhite"
-            android:text="바른 자세\n설정"
-            android:textSize="18sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"></LinearLayout>
-
-</LinearLayout>
+    <ImageView
+        android:id="@+id/help_zero"
+        android:src="@drawable/ic_help_zero"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="20dp"
+        android:scaleType="centerInside"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+</FrameLayout>

@@ -3,6 +3,7 @@ package com.example.bottomtab;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.RotateAnimation;
@@ -20,14 +21,16 @@ public class HomeFragment extends Fragment {
     ImageView avatar;
     TextView bubbleView;
     Button measureButton;
+    ImageView helpButton;
     View rootView;
+    ImageView helpBoxZero;
     int state = 0; // 0: stopped  1: zero in  2: measuring
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
         if(this.avatar==null){
             avatar = rootView.findViewById(R.id.avatar_image);
@@ -36,19 +39,35 @@ public class HomeFragment extends Fragment {
             avatarAnimation = new AvatarAnimation(this, avatar);
         }
         bubbleView = rootView.findViewById(R.id.bubble_text);
+        helpBoxZero = rootView.findViewById(R.id.help_zero);
+        helpBoxZero.setVisibility(View.INVISIBLE);
+        rootView.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    helpBoxZero.setVisibility(View.INVISIBLE);
+                }
+                return true;
+            }
+        });
+        helpButton = rootView.findViewById(R.id.help_button);
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpBoxZero.setVisibility(View.VISIBLE);
+            }
+        });
         measureButton = rootView.findViewById(R.id.measuring_button);
         measureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                helpBoxZero.setVisibility(View.INVISIBLE);
                 toggleState();
                 setBubbleText();
-                setButtonText();
-                setButtonColor();
+                setButtonProperty();
             }
         });
         setBubbleText();
-        setButtonText();
-        setButtonColor();
+        setButtonProperty();
 
         return rootView;
     }
@@ -72,34 +91,25 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private void setButtonText(){
-        switch (state){
-            case 0:
-                measureButton.setText(R.string.button_text_state0);
-                break;
-            case 1:
-                measureButton.setText(R.string.button_text_state1);
-                break;
-            case 2:
-                measureButton.setText(R.string.button_text_state2);
-                break;
-        }
-    }
-
-    private void setButtonColor(){
+    private void setButtonProperty(){
         switch (state){
             case 0:
                 ((GradientDrawable)measureButton.getBackground()).setColor(getResources().getColor(R.color.colorButtonState0));
+                measureButton.setText(R.string.button_text_state0);
+                helpButton.setVisibility(View.INVISIBLE);
                 break;
             case 1:
                 ((GradientDrawable)measureButton.getBackground()).setColor(getResources().getColor(R.color.colorButtonState1));
+                measureButton.setText(R.string.button_text_state1);
+                helpButton.setVisibility(View.VISIBLE);
                 break;
             case 2:
                 ((GradientDrawable)measureButton.getBackground()).setColor(getResources().getColor(R.color.colorButtonState2));
+                measureButton.setText(R.string.button_text_state2);
+                helpButton.setVisibility(View.INVISIBLE);
                 break;
         }
     }
-
 
     public void activate(){
         avatarAnimation.activate();
