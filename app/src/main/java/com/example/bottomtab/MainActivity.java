@@ -141,8 +141,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.device_information_menu:
                         startActivity(new Intent(MainActivity.this, DeviceInformationActivity.class));
                         break;
-                    case R.id.description_menu:
-                        startActivity(new Intent(MainActivity.this, DescriptionActivity.class));
+                    case R.id.instruction_menu:
+                        startActivity(new Intent(MainActivity.this, InstructionActivity.class));
                         break;
                     case R.id.customer_service_menu:
                         startActivity(new Intent(MainActivity.this, CustomerServiceActivity.class));

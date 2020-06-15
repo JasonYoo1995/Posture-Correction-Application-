@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/description_container"
+            android:id="@+id/instruction_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/arrow_container">
@@ -21,10 +21,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp">
                 <TextView
-                    android:id="@+id/title_description"
+                    android:id="@+id/title_instruction"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/description_title_1"
+                    android:text="@string/instruction_title_1"
                     android:textSize="30dp"
                     android:textStyle="italic"
                     android:gravity="center"
@@ -33,7 +33,7 @@
                     android:layout_gravity="center"/>
                 <ImageView
                     android:layout_alignParentRight="true"
-                    android:id="@+id/button_description_exit"
+                    android:id="@+id/button_instruction_exit"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="20dp"
@@ -88,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:orientation="horizontal"
-            android:layout_above="@id/description_navigation_view">
+            android:layout_above="@id/instruction_navigation_view">
             <ImageView
                 android:id="@+id/arrow1"
                 android:src="@drawable/ic_arrow"
@@ -148,13 +148,13 @@
 
         <LinearLayout
             android:layout_alignParentBottom="true"
-            android:id="@+id/description_navigation_view"
+            android:id="@+id/instruction_navigation_view"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/colorBlack"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/description_tab1"
+                android:id="@+id/instruction_tab1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="@string/tab_1"
@@ -163,7 +163,7 @@
                 android:textSize="12dp"
                 android:layout_weight="1"/>
             <TextView
-                android:id="@+id/description_tab2"
+                android:id="@+id/instruction_tab2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="@string/tab_2"
@@ -172,7 +172,7 @@
                 android:textSize="12dp"
                 android:layout_weight="1"/>
             <TextView
-                android:id="@+id/description_tab3"
+                android:id="@+id/instruction_tab3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="@string/tab_3"
@@ -181,7 +181,7 @@
                 android:textSize="12dp"
                 android:layout_weight="1"/>
             <TextView
-                android:id="@+id/description_tab4"
+                android:id="@+id/instruction_tab4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="@string/tab_4"
@@ -190,7 +190,7 @@
                 android:textSize="12dp"
                 android:layout_weight="1"/>
             <TextView
-                android:id="@+id/description_tab5"
+                android:id="@+id/instruction_tab5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="@string/tab_5"
@@ -199,7 +199,7 @@
                 android:textSize="12dp"
                 android:layout_weight="1"/>
             <TextView
-                android:id="@+id/description_tab6"
+                android:id="@+id/instruction_tab6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="@string/tab_6"
@@ -208,7 +208,7 @@
                 android:textSize="12dp"
                 android:layout_weight="1"/>
             <TextView
-                android:id="@+id/description_tab7"
+                android:id="@+id/instruction_tab7"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="@string/tab_7"
@@ -218,7 +218,7 @@
                 android:layout_weight="1"/>
 
             <TextView
-                android:id="@+id/description_tab8"
+                android:id="@+id/instruction_tab8"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

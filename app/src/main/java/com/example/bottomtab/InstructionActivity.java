@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DescriptionActivity extends Activity {
+public class InstructionActivity extends Activity {
     ImageView currentArrow;
     int page = 1;
     Button prevButton;
@@ -18,7 +18,7 @@ public class DescriptionActivity extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_description);
+        setContentView(R.layout.layout_instruction);
         prevButton = findViewById(R.id.prev);
         nextButton = findViewById(R.id.next);
         prevButton.setOnClickListener(new View.OnClickListener() {
@@ -36,8 +36,8 @@ public class DescriptionActivity extends Activity {
             }
         });
         addBottomTabEvents();
-        title = findViewById(R.id.title_description);
-        exitButton = findViewById(R.id.button_description_exit);
+        title = findViewById(R.id.title_instruction);
+        exitButton = findViewById(R.id.button_instruction_exit);
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,49 +49,49 @@ public class DescriptionActivity extends Activity {
     private void addBottomTabEvents() {
         prevButton.setClickable(false);
         currentArrow = findViewById(R.id.arrow1);
-        findViewById(R.id.description_tab1).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.instruction_tab1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moveArrow(1);
             }
         });
-        findViewById(R.id.description_tab2).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.instruction_tab2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moveArrow(2);
             }
         });
-        findViewById(R.id.description_tab3).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.instruction_tab3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moveArrow(3);
             }
         });
-        findViewById(R.id.description_tab4).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.instruction_tab4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moveArrow(4);
             }
         });
-        findViewById(R.id.description_tab5).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.instruction_tab5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moveArrow(5);
             }
         });
-        findViewById(R.id.description_tab6).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.instruction_tab6).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moveArrow(6);
             }
         });
-        findViewById(R.id.description_tab7).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.instruction_tab7).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moveArrow(7);
             }
         });
-        findViewById(R.id.description_tab8).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.instruction_tab8).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moveArrow(8);
@@ -109,50 +109,50 @@ public class DescriptionActivity extends Activity {
                 this.page = 1;
                 findViewById(R.id.arrow1).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow1);
-                title.setText(R.string.description_title_1);
+                title.setText(R.string.instruction_title_1);
                 break;
             case 2:
                 this.page = 2;
                 findViewById(R.id.arrow2).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow2);
-                title.setText(R.string.description_title_2);
+                title.setText(R.string.instruction_title_2);
                 break;
             case 3:
                 this.page = 3;
                 findViewById(R.id.arrow3).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow3);
-                title.setText(R.string.description_title_3);
+                title.setText(R.string.instruction_title_3);
                 break;
             case 4:
                 this.page = 4;
                 findViewById(R.id.arrow4).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow4);
-                title.setText(R.string.description_title_4);
+                title.setText(R.string.instruction_title_4);
                 break;
             case 5:
                 this.page = 5;
                 findViewById(R.id.arrow5).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow5);
-                title.setText(R.string.description_title_5);
+                title.setText(R.string.instruction_title_5);
                 break;
             case 6:
                 this.page = 6;
                 findViewById(R.id.arrow6).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow6);
-                title.setText(R.string.description_title_6);
+                title.setText(R.string.instruction_title_6);
                 break;
             case 7:
                 this.page = 7;
                 findViewById(R.id.arrow7).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow7);
-                title.setText(R.string.description_title_7);
+                title.setText(R.string.instruction_title_7);
                 break;
             case 8:
                 nextButton.setClickable(false);
                 this.page = 8;
                 findViewById(R.id.arrow8).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow8);
-                title.setText(R.string.description_title_8);
+                title.setText(R.string.instruction_title_8);
                 break;
         }
     }

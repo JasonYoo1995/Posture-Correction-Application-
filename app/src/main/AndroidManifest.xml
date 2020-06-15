@@ -37,8 +37,8 @@
             android:label="@string/device_information">
         </activity>
         <activity
-            android:name=".DescriptionActivity"
-            android:label="@string/description">
+            android:name=".InstructionActivity"
+            android:label="@string/instruction">
         </activity>
         <activity
             android:name=".CustomerServiceActivity"

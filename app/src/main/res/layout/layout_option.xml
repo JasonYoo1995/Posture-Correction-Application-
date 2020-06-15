@@ -9,7 +9,6 @@
         android:orientation="vertical">
         <RelativeLayout
             android:id="@+id/option_title_container"
-            android:layout_alignParentTop="true"
             android:layout_width="match_parent"
             android:layout_height="100dp">
             <TextView
@@ -17,7 +16,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/title_option"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:textStyle="italic"
                 android:gravity="center"
                 android:textColor="@color/colorLightBlue"
@@ -30,13 +29,14 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:src="@drawable/ic_exit" />
+                android:src="@drawable/ic_exit"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp" />
         </RelativeLayout>
         <ImageView
             android:id="@+id/help_button_in_option"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="10dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_help"/>
     </LinearLayout>

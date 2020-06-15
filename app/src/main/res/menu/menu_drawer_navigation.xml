@@ -9,8 +9,8 @@
         android:title="@string/device_information"
         />
     <item
-        android:id="@+id/description_menu"
-        android:title="@string/description"
+        android:id="@+id/instruction_menu"
+        android:title="@string/instruction"
         />
     <item
         android:id="@+id/customer_service_menu"
