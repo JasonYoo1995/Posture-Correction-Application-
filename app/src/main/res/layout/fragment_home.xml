@@ -60,17 +60,26 @@
             android:layout_height="0dp"
             android:layout_weight="0.1"/>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_weight="1.1">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/avatar_image"
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/avatar_front"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_avatar" />
-        </LinearLayout>
+                android:src="@drawable/avatar_front" />
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/avatar_side"
+                android:layout_toRightOf="@id/avatar_front"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/avatar_side"/>
+        </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -149,6 +158,7 @@
 
     </LinearLayout>
 
+
     <ImageView
         android:id="@+id/help_zero"
         android:src="@drawable/ic_help_zero"
@@ -159,5 +169,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
-
 </FrameLayout>

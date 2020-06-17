@@ -46,18 +46,8 @@ public class MainActivity extends AppCompatActivity {
     OptionDialog optionDialog;
 
     // bluetooth
-
-//    TextView mTvBluetoothStatus;
-//    TextView mTvReceiveData;
-//    TextView mTvSendData;
-//    Button mBtnBluetoothOn;
-//    Button mBtnBluetoothOff;
-//    Button mBtnConnect;
-//    Button mBtnSendData;
-
     BluetoothAdapter mBluetoothAdapter;
     Set<BluetoothDevice> mPairedDevices;
-//    List<String> mListPairedDevices;
 
     Handler mBluetoothHandler;
     ConnectedBluetoothThread mThreadConnectedBluetooth;
@@ -68,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
     final static int BT_MESSAGE_READ = 2;
     final static int BT_CONNECTING_STATUS = 3;
     final static UUID BT_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-
     // bluetooth
 
     @Override
@@ -93,45 +82,7 @@ public class MainActivity extends AppCompatActivity {
         addBottomTabEvents();
 
         // bluetooth
-
-//        mTvBluetoothStatus = (TextView)findViewById(R.id.tvBluetoothStatus);
-//        mTvReceiveData = (TextView)homeFragment.rootView.findViewById(R.id.tvReceiveData);
-//        mTvSendData =  (EditText) findViewById(R.id.tvSendData);
-//        mBtnBluetoothOn = (Button)findViewById(R.id.btnBluetoothOn);
-//        mBtnBluetoothOff = (Button)findViewById(R.id.btnBluetoothOff);
-//        mBtnConnect = (Button)findViewById(R.id.btnConnect);
-//        mBtnSendData = (Button)findViewById(R.id.btnSendData);
-
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-
-
-//        mBtnBluetoothOn.setOnClickListener(new Button.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                bluetoothOn();
-//            }
-//        });
-//        mBtnBluetoothOff.setOnClickListener(new Button.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                bluetoothOff();
-//            }
-//        });
-//        mBtnConnect.setOnClickListener(new Button.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                listPairedDevices();
-//            }
-//        });
-//        mBtnSendData.setOnClickListener(new Button.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(mThreadConnectedBluetooth != null) {
-//                    mThreadConnectedBluetooth.write(mTvSendData.getText().toString());
-//                    mTvSendData.setText("");
-//                }
-//            }
-//        });
         mBluetoothHandler = new Handler(){
             public void handleMessage(android.os.Message msg){
                 if(msg.what == BT_MESSAGE_READ){
@@ -159,14 +110,13 @@ public class MainActivity extends AppCompatActivity {
                             System.out.println("Number Format exception");
                         }
                     }
-                    homeFragment.setPostureData("x축 : "+x+"\ny축 : "+y);
+//                    homeFragment.setPostureData("x축 : "+x+"\ny축 : "+y);
+                    homeFragment.setImageDegree(y, x);
 //                    System.out.println(x +"/"+y);
                 }
             }
         };
-
         // bluetooth
-
     }
 
     private void addBottomTabEvents() {
@@ -186,9 +136,6 @@ public class MainActivity extends AppCompatActivity {
                 bottomNavigationView.setSelectedItemId(R.id.home_menu);
                 setTitle(R.string.title_home);
                 fragmentManager.beginTransaction().replace(R.id.fragment_container, homeFragment).commit();
-
-//                homeFragment.activate(); // 측정 시작 시 호출
-//                homeFragment.setAvatarTargetDegree(60);
             }
         });
         findViewById(R.id.statistics_menu).setOnClickListener(new View.OnClickListener() {
@@ -275,7 +222,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // bluetooth
-
     void bluetoothOn() {
         if(mBluetoothAdapter == null) {
             Toast.makeText(getApplicationContext(), "블루투스를 지원하지 않는 기기입니다.", Toast.LENGTH_SHORT).show();
@@ -298,9 +244,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "블루투스가 비활성화 되었습니다.", Toast.LENGTH_SHORT).show();
 //            mTvBluetoothStatus.setText("비활성화");
 
-            homeFragment.state = 0;
-            homeFragment.setBubbleText();
-            homeFragment.setButtonProperty();
+            homeFragment.initializeHome();
         }
         else {
 //            Toast.makeText(getApplicationContext(), "블루투스가 이미 비활성화 되어 있습니다.", Toast.LENGTH_SHORT).show();
@@ -317,9 +261,7 @@ public class MainActivity extends AppCompatActivity {
 //                    Toast.makeText(getApplicationContext(), "취소", Toast.LENGTH_SHORT).show();
 //                    mTvBluetoothStatus.setText("비활성화");
 
-                    homeFragment.state = 0;
-                    homeFragment.setBubbleText();
-                    homeFragment.setButtonProperty();
+                    homeFragment.initializeHome();
                 }
                 break;
         }
@@ -368,12 +310,15 @@ public class MainActivity extends AppCompatActivity {
         try {
             mBluetoothSocket = mBluetoothDevice.createRfcommSocketToServiceRecord(BT_UUID);
             mBluetoothSocket.connect();
+            makeToast("기기와 연결되었습니다.");
             mThreadConnectedBluetooth = new ConnectedBluetoothThread(mBluetoothSocket);
             mThreadConnectedBluetooth.start();
             mBluetoothHandler.obtainMessage(BT_CONNECTING_STATUS, 1, -1).sendToTarget();
         } catch (IOException e) {
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "블루투스 연결 중 오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
+//            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "기기와 연결을 실패했습니다.", Toast.LENGTH_SHORT).show();
+
+            homeFragment.initializeHome();
         }
     }
 
@@ -413,14 +358,6 @@ public class MainActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     break;
                 }
-            }
-        }
-        public void write(String str) {
-            byte[] bytes = str.getBytes();
-            try {
-                mmOutStream.write(bytes);
-            } catch (IOException e) {
-                Toast.makeText(getApplicationContext(), "데이터 전송 중 오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
             }
         }
         public void cancel() {

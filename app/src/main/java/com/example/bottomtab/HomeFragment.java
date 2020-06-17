@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,8 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class HomeFragment extends Fragment {
-    AvatarAnimation avatarAnimation;
-    ImageView avatar;
+    ImageView avatarFront;
+    ImageView avatarSide;
     TextView bubbleView;
     Button measureButton;
     View rootView;
@@ -40,11 +39,12 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        if(this.avatar==null){
-            avatar = rootView.findViewById(R.id.avatar_image);
+        if(this.avatarFront==null){
+            avatarFront = rootView.findViewById(R.id.avatar_front);
         }
-        if(avatarAnimation==null){
-            avatarAnimation = new AvatarAnimation(this, avatar);
+        if(this.avatarSide==null){
+            avatarSide = rootView.findViewById(R.id.avatar_side);
+
         }
         bubbleView = rootView.findViewById(R.id.bubble_text);
         helpBoxZero = rootView.findViewById(R.id.help_zero);
@@ -80,6 +80,21 @@ public class HomeFragment extends Fragment {
         return rootView;
     }
 
+    public void initializeHome(){
+        state = 0;
+        setBubbleText();
+        setButtonProperty();
+        setImageDegree(90,90);
+    }
+
+    public void setImageDegree(int degreeFront, int degreeSide){
+        int front = 180-degreeFront-90;
+        int side = 180-degreeSide-90;
+        if(front<-90 || front>90 || front<-90 || side>90) return;
+        avatarFront.setRotation(180-degreeFront-90);
+        avatarSide.setRotation(180-degreeSide-90);
+    }
+
     public void setPostureData(String string){
         postureData.setText(string);
     }
@@ -88,7 +103,6 @@ public class HomeFragment extends Fragment {
         if(BluetoothAdapter.getDefaultAdapter().isEnabled()){
             if(state==0){
                 mainActivity.listPairedDevices();
-                makeToast("기기와 연결되었습니다.");
             }
             if(state==1){
                 makeToast("영점 조절을 했습니다.");
@@ -96,6 +110,8 @@ public class HomeFragment extends Fragment {
             if(state==2){
                 makeToast("기기와 연결을 해제했습니다.");
                 mainActivity.mThreadConnectedBluetooth.cancel();
+                initializeHome();
+                return;
             }
             state+=1;
             state%=3;
@@ -141,18 +157,6 @@ public class HomeFragment extends Fragment {
                 helpButton.setVisibility(View.INVISIBLE);
                 break;
         }
-    }
-
-    public void activate(){
-        avatarAnimation.activate();
-    }
-
-    public void rotateAvatar(RotateAnimation rotateAnimation){
-        avatar.startAnimation(rotateAnimation);
-    }
-
-    public void setAvatarTargetDegree(int targetDegree){
-        avatarAnimation.setTarget(targetDegree);
     }
 
     private void makeToast(String string){
