@@ -123,6 +123,32 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></View>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></View>
+        <TextView
+            android:id="@+id/received_posture_data"
+            android:layout_width="0dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal" />
+
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/help_zero"
         android:src="@drawable/ic_help_zero"
@@ -133,4 +159,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
+
 </FrameLayout>

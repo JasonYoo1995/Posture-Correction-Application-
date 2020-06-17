@@ -168,6 +168,7 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
+                        android:layout_marginTop="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/warning_subtitle2"
@@ -203,7 +204,7 @@
                         android:layout_height="wrap_content"
                         android:text="진동세기조절"
                         android:textSize="22dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
                         android:layout_gravity="center_horizontal"
                         />
 
@@ -220,7 +221,6 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
 
     <RelativeLayout
         android:layout_width="match_parent"

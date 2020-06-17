@@ -1,5 +1,6 @@
 package com.example.bottomtab;
 
+import android.bluetooth.BluetoothAdapter;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,8 +25,14 @@ public class HomeFragment extends Fragment {
     View rootView;
     ImageView helpButton;
     ImageView helpBoxZero;
+    MainActivity mainActivity;
+    TextView postureData;
 
     int state = 0; // 0: stopped  1: zero in  2: measuring
+
+    HomeFragment(MainActivity mainActivity){
+        this.mainActivity = mainActivity;
+    }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,22 +70,46 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 helpBoxZero.setVisibility(View.INVISIBLE);
                 toggleState();
-                setBubbleText();
-                setButtonProperty();
             }
         });
         setBubbleText();
         setButtonProperty();
 
+        postureData = rootView.findViewById(R.id.received_posture_data);
+
         return rootView;
     }
 
-    private void toggleState(){
-        state+=1;
-        state%=3;
+    public void setPostureData(String string){
+        postureData.setText(string);
     }
 
-    private void setBubbleText(){
+    private void toggleState(){
+        if(BluetoothAdapter.getDefaultAdapter().isEnabled()){
+            if(state==0){
+                mainActivity.listPairedDevices();
+//                makeToast("기기와 연결되었습니다.");
+            }
+            if(state==1){
+//                makeToast("영점 조절을 했습니다.");
+            }
+            if(state==2){
+//                makeToast("기기와 연결을 해제했습니다.");
+//                mainActivity.mThreadConnectedBluetooth.cancel();
+            }
+            state+=1;
+            state%=3;
+        }
+        else{
+            makeToast("블루투스를 켜고 다시 시도하세요.");
+            if(state==0) return;
+            else state = 0;
+        }
+        setBubbleText();
+        setButtonProperty();
+    }
+
+    public void setBubbleText(){
         switch (state){
             case 0:
                 bubbleView.setText(R.string.bubble_text_state0);
@@ -92,7 +123,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private void setButtonProperty(){
+    public void setButtonProperty(){
         switch (state){
             case 0:
                 ((GradientDrawable)measureButton.getBackground()).setColor(getResources().getColor(R.color.colorButtonState0));
