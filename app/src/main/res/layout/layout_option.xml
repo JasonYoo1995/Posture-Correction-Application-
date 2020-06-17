@@ -1,45 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorDarkGray"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="20dp">
     <LinearLayout
+        android:id="@+id/instruction_container"
+        android:background="@color/colorWhite"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/arrow_container"
         android:orientation="vertical">
         <RelativeLayout
-            android:id="@+id/option_title_container"
+            android:id="@+id/instruction_title_container"
             android:layout_width="match_parent"
             android:layout_height="100dp">
             <TextView
-                android:id="@+id/title_option"
+                android:id="@+id/title_instruction"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/title_option"
-                android:textSize="30sp"
+                android:text="@string/warning_title"
+                android:textSize="30dp"
                 android:textStyle="italic"
                 android:gravity="center"
                 android:textColor="@color/colorLightBlue"
-                android:layout_gravity="center"/>
 
+                android:layout_gravity="center"/>
             <ImageView
                 android:layout_alignParentRight="true"
-                android:id="@+id/button_exit_option"
+                android:id="@+id/button_option_exit"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:src="@drawable/ic_exit"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="20dp" />
+                android:src="@drawable/ic_exit" />
+
         </RelativeLayout>
-        <ImageView
-            android:id="@+id/help_button_in_option"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_help"/>
+
+
+        <LinearLayout
+            android:id="@+id/prev_next_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/warning_subtitle"
+                    android:textSize="22dp"
+                    android:layout_gravity="center_horizontal"/>
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/label_alert_degree_in_option"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/warning1"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="10dp">
+                    </TextView>
+                    <ImageView
+                        android:layout_toRightOf="@id/label_alert_degree_in_option"
+                        android:id="@+id/help_button_in_option"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="0dp"
+                        android:src="@drawable/ic_help"/>
+                </RelativeLayout>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/warning1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/warning2"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="10dp">
+                </TextView>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/warning1"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <LinearLayout
+                        android:layout_width="140dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:id="@+id/id1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/warning3"
+                            android:textSize="20dp"
+                            android:layout_gravity="center_horizontal"/>
+
+                        <Spinner
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/array2"
+                            android:layout_below="@id/id1"
+                            android:layout_gravity="center_horizontal">
+                        </Spinner>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:id="@+id/id2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/warning4"
+                            android:textSize="20dp"
+                            android:layout_gravity="center_horizontal"/>
+
+                        <Spinner
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/array2"
+                            android:layout_below="@id/id2"
+                            android:layout_gravity="center_horizontal">
+                        </Spinner>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/warning_subtitle2"
+                        android:textSize="22dp"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        >
+
+                        <RadioButton
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="ON"
+                            android:checked="true"/>
+
+                        <RadioButton
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="OFF"/>
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="진동세기조절"
+                        android:textSize="22dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:max="10"
+                        android:progress="6"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -49,8 +230,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="20dp"
-            android:scaleType="fitCenter"
+            android:layout_marginBottom="70dp"
+            android:scaleType="fitEnd"
             android:src="@drawable/ic_help_alert" />
     </RelativeLayout>
+
 </FrameLayout>

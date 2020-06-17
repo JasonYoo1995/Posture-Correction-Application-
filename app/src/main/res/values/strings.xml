@@ -14,7 +14,7 @@
     <string name="Button2">타인의기록</string>
     <string name="Button3">미래기록</string>
 
-    <string-array name="array">
+    <string-array name="array1">
         <item>일간</item>
         <item>주간</item>
         <item>월간</item>
@@ -51,6 +51,8 @@
     <string name="prev">&lt; 이전</string>
     <string name="next">다음 &gt;</string>
 
+    <string name="title_option">경고 옵션</string>
+
     <string name="instruction_title_1">부착 방법 안내</string>
     <string name="instruction_title_2">부착 방법 안내</string>
     <string name="instruction_title_3">부착 방법 안내</string>
@@ -59,6 +61,43 @@
     <string name="instruction_title_6">측정 방법 안내</string>
     <string name="instruction_title_7">자세 통계 분석</string>
     <string name="instruction_title_8">자세 정보 컨텐츠</string>
+    <string name="warning_title">경고옵션</string>
+    <string name="warning1">앞뒤경고각도</string>
+    <string name="warning2">좌우경고각도</string>
+    <string name="warning3">경고시작시간</string>
+    <string name="warning4">경고주기</string>
 
-    <string name="title_option">경고 옵션</string>
+    <string-array name="array2">
+        <item>1초</item>
+        <item>2초</item>
+        <item>3초</item>
+        <item>4초</item>
+        <item>5초</item>
+        <item>6초</item>
+        <item>7초</item>
+        <item>8초</item>
+        <item>9초</item>
+        <item>10초</item>
+    </string-array>
+    <string name="warning_subtitle">경고설정</string>
+    <string name="warning_subtitle2">진동설정</string>
+
+    <string-array name="array3">
+        <item>아바타1</item>
+        <item>아바타2</item>
+        <item>아바타3</item>
+        <item>아바타4</item>
+        <item>아바타5</item>
+    </string-array>
+
+    <string name="instruction_explanation_1">본체와 동봉된 목걸이를 준비합니다</string>
+    <string name="instruction_explanation_2">목걸이와 본체를 연결해주세요</string>
+    <string name="instruction_explanation_3">본체가 목 뒤로 가게 목에 걸어주세요</string>
+    <string name="instruction_explanation_4">착용이 끝났습니다</string>
+    <string name="instruction_explanation_5">바른 자세를 유지하고 시작버튼을 누릅니다</string>
+    <string name="instruction_explanation_6">경고 알림을 줄 나쁜 자세 각도와 경고 시작시간, 주기를 조정하고 필요하면 진동을 ON/OFF 합니다.</string>
+    <string name="instruction_explanation_7">나의 자세 기록을 일간/주간/월간/연간으로 확인할 수 있어요</string>
+    <string name="instruction_explanation_8">바른 자세를 위한 운동법과 다양한 컨텐츠를 볼 수 있어요</string>
+
+
 </resources>

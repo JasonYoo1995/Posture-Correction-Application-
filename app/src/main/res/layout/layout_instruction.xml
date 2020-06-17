@@ -45,40 +45,50 @@
 
             <ViewFlipper
                 android:id="@+id/page_area"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/instruction_title_container"
-                android:layout_above="@id/prev_next_layout">
+                android:layout_above="@id/prev_next_layout"
+                android:layout_centerInParent="true">
+
                 <include
                     layout="@layout/layout_page_1"
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
                 <include
                     layout="@layout/layout_page_2"
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
                 <include
                     layout="@layout/layout_page_3"
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
                 <include
                     layout="@layout/layout_page_4"
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
                 <include
                     layout="@layout/layout_page_5"
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
                 <include
                     layout="@layout/layout_page_6"
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
                 <include
                     layout="@layout/layout_page_7"
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
                 <include
                     layout="@layout/layout_page_8"
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
             </ViewFlipper>

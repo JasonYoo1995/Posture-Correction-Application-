@@ -39,7 +39,7 @@
             android:layout_marginRight="100dp"
             android:layout_marginEnd="100dp"
             android:layout_marginBottom="200dp"
-            android:entries="@array/array"
+            android:entries="@array/array1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

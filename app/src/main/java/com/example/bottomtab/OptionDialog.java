@@ -27,7 +27,7 @@ public class OptionDialog extends Dialog {
             }
         });
 
-        exitButton = findViewById(R.id.button_exit_option);
+        exitButton = findViewById(R.id.button_option_exit);
         exitButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
