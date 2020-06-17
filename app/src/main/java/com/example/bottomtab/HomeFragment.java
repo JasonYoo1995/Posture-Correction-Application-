@@ -39,13 +39,9 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        if(this.avatarFront==null){
-            avatarFront = rootView.findViewById(R.id.avatar_front);
-        }
-        if(this.avatarSide==null){
-            avatarSide = rootView.findViewById(R.id.avatar_side);
+        avatarFront = rootView.findViewById(R.id.avatar_front);
+        avatarSide = rootView.findViewById(R.id.avatar_side);
 
-        }
         bubbleView = rootView.findViewById(R.id.bubble_text);
         helpBoxZero = rootView.findViewById(R.id.help_zero);
         helpBoxZero.setVisibility(View.INVISIBLE);
