@@ -88,14 +88,14 @@ public class HomeFragment extends Fragment {
         if(BluetoothAdapter.getDefaultAdapter().isEnabled()){
             if(state==0){
                 mainActivity.listPairedDevices();
-//                makeToast("기기와 연결되었습니다.");
+                makeToast("기기와 연결되었습니다.");
             }
             if(state==1){
-//                makeToast("영점 조절을 했습니다.");
+                makeToast("영점 조절을 했습니다.");
             }
             if(state==2){
-//                makeToast("기기와 연결을 해제했습니다.");
-//                mainActivity.mThreadConnectedBluetooth.cancel();
+                makeToast("기기와 연결을 해제했습니다.");
+                mainActivity.mThreadConnectedBluetooth.cancel();
             }
             state+=1;
             state%=3;
