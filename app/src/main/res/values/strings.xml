@@ -39,10 +39,10 @@
     <string name="button_text_state1">바른 자세로\n설정</string>
     <string name="button_text_state2">기록 중지</string>
 
-    <string name="tab_1">부착1</string>
-    <string name="tab_2">부착2</string>
-    <string name="tab_3">부착3</string>
-    <string name="tab_4">부착4</string>
+    <string name="tab_1">착용1</string>
+    <string name="tab_2">착용2</string>
+    <string name="tab_3">착용3</string>
+    <string name="tab_4">착용4</string>
     <string name="tab_5">초기\n설정</string>
     <string name="tab_6">경고\n설정</string>
     <string name="tab_7">자세\n통계</string>
@@ -81,6 +81,7 @@
     </string-array>
     <string name="warning_subtitle">경고설정</string>
     <string name="warning_subtitle2">진동설정</string>
+    <string name="warning_subtitle3">진동세기조절</string>
 
     <string-array name="array3">
         <item>아바타1</item>
@@ -99,5 +100,108 @@
     <string name="instruction_explanation_7">나의 자세 기록을 일간/주간/월간/연간으로 확인할 수 있어요</string>
     <string name="instruction_explanation_8">바른 자세를 위한 운동법과 다양한 컨텐츠를 볼 수 있어요</string>
 
+
+<!--         ===========================================  ENGLISH STRINGS  ===========================================-->
+
+<!--    <string name="app_name">CYLP</string>-->
+<!--    <string name="title_contents">Contents</string>-->
+<!--    <string name="title_home">Posture</string>-->
+<!--    <string name="title_statistics">Analysis</string>-->
+<!--    <string name="profile">Profile</string>-->
+<!--    <string name="device_information">Device Information</string>-->
+<!--    <string name="instruction">Instruction</string>-->
+<!--    <string name="customer_service">Customer Support</string>-->
+<!--    <string name="drawer_open">drawer_open</string>-->
+<!--    <string name="drawer_close">drawer_close</string>-->
+
+<!--    <string name="Button1">My Records</string>-->
+<!--    <string name="Button2">Other\'s Records</string>-->
+<!--    <string name="Button3">Future Result</string>-->
+
+<!--    <string-array name="array1">-->
+<!--        <item>day</item>-->
+<!--        <item>week</item>-->
+<!--        <item>month</item>-->
+<!--        <item>year</item>-->
+<!--    </string-array>-->
+
+<!--    <string name="string1">Contents</string>-->
+<!--    <string name="string2">Bookmark</string>-->
+<!--    <string name="string3">라운드숄더교정루틴A</string>-->
+<!--    <string name="string4">거북목교정법</string>-->
+<!--    <string name="string5">[후기]5분만에 라운드 숄더, 굽은등 펴기</string>-->
+<!--    <string name="string6">거북목교정!페인랩이말하는교정이야기</string>-->
+<!--    <string name="string7">하루10분!전신자세교정</string>-->
+<!--    <string name="string8">어깨통증도수치료2부</string>-->
+
+<!--    <string name="create_account">Create Account</string>-->
+
+<!--    <string name="bubble_text_state0">Press start button!</string>-->
+<!--    <string name="bubble_text_state1">The most ideal posture is..?</string>-->
+<!--    <string name="bubble_text_state2">It\'s measuring your posture now!</string>-->
+<!--    <string name="button_text_state0">Start\nMeasuring</string>-->
+<!--    <string name="button_text_state1">Set Right\nPosture</string>-->
+<!--    <string name="button_text_state2">Stop</string>-->
+
+<!--    <string name="tab_1">wear1</string>-->
+<!--    <string name="tab_2">wear2</string>-->
+<!--    <string name="tab_3">wear3</string>-->
+<!--    <string name="tab_4">wear4</string>-->
+<!--    <string name="tab_5">set</string>-->
+<!--    <string name="tab_6">alert</string>-->
+<!--    <string name="tab_7">analysis</string>-->
+<!--    <string name="tab_8">contents</string>-->
+
+<!--    <string name="prev">&lt; prev</string>-->
+<!--    <string name="next">next &gt;</string>-->
+
+<!--    <string name="title_option">Alert Option</string>-->
+
+<!--    <string name="instruction_title_1">How to wear</string>-->
+<!--    <string name="instruction_title_2">How to wear</string>-->
+<!--    <string name="instruction_title_3">How to wear</string>-->
+<!--    <string name="instruction_title_4">How to wear</string>-->
+<!--    <string name="instruction_title_5">How to measure</string>-->
+<!--    <string name="instruction_title_6">How to measure</string>-->
+<!--    <string name="instruction_title_7">Statistics &amp; Analysis</string>-->
+<!--    <string name="instruction_title_8">Contents</string>-->
+<!--    <string name="warning_title">Alert Option</string>-->
+<!--    <string name="warning1">Vertical Alerting Degree</string>-->
+<!--    <string name="warning2">Horizontal Alerting Degree</string>-->
+<!--    <string name="warning3">Alerting\nStarting Time</string>-->
+<!--    <string name="warning4">Alerting\nPeriod</string>-->
+
+<!--    <string-array name="array2">-->
+<!--        <item>1sec</item>-->
+<!--        <item>2sec</item>-->
+<!--        <item>3sec</item>-->
+<!--        <item>4sec</item>-->
+<!--        <item>5sec</item>-->
+<!--        <item>6sec</item>-->
+<!--        <item>7sec</item>-->
+<!--        <item>8sec</item>-->
+<!--        <item>9sec</item>-->
+<!--        <item>10sec</item>-->
+<!--    </string-array>-->
+<!--    <string name="warning_subtitle">Alerting Option</string>-->
+<!--    <string name="warning_subtitle2">Vibration Option</string>-->
+<!--    <string name="warning_subtitle3">Vibration Intensity Adjustment</string>-->
+
+<!--    <string-array name="array3">-->
+<!--        <item>Avatar1</item>-->
+<!--        <item>Avatar2</item>-->
+<!--        <item>Avatar3</item>-->
+<!--        <item>Avatar4</item>-->
+<!--        <item>Avatar5</item>-->
+<!--    </string-array>-->
+
+<!--    <string name="instruction_explanation_1">Take the device and the necklace.</string>-->
+<!--    <string name="instruction_explanation_2">Connect the device with the necklace.</string>-->
+<!--    <string name="instruction_explanation_3">Wearing the necklace with the device on the back of your neck.</string>-->
+<!--    <string name="instruction_explanation_4">It\'s done! </string>-->
+<!--    <string name="instruction_explanation_5">Straighten up your upper body and press the start button.</string>-->
+<!--    <string name="instruction_explanation_6">Adjust the alerting degree, starting time, period for when your body is slouched. And if needed, set on or off the vibration.</string>-->
+<!--    <string name="instruction_explanation_7">You can see your records daily/weekly/monthly/annual basis.</string>-->
+<!--    <string name="instruction_explanation_8">You can see various contents concerned with posture such as right exercise posture.</string>-->
 
 </resources>

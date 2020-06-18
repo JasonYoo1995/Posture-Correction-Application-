@@ -202,7 +202,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="진동세기조절"
+                        android:text="@string/warning_subtitle3"
                         android:textSize="22dp"
                         android:layout_marginTop="20dp"
                         android:layout_gravity="center_horizontal"
