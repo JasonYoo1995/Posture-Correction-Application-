@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="바른 자세를 위한 퍼스널 트레이너"
+            android:text="@string/text_initial"
             android:textSize="20dp"
             android:layout_marginTop="30dp"
             android:textColor="@color/colorInitialText"

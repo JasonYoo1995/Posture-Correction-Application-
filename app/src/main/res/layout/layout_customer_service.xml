@@ -26,42 +26,42 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1. 연결이 안됩니다"
+            android:text="@string/customer_service_text1"
             android:textSize="20dp"
             android:layout_marginTop="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2. 어떻게 착용하는지 모르겠습니다"
+            android:text="@string/customer_service_text2"
             android:textSize="20dp"
             android:layout_marginTop="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3. 배터리는 얼마나 지속되나요?"
+            android:text="@string/customer_service_text3"
             android:textSize="20dp"
             android:layout_marginTop="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4. 앱데이터가 다 날라갔어요"
+            android:text="@string/customer_service_text4"
             android:textSize="20dp"
             android:layout_marginTop="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5. 다른 부위에 장착해도 되나요?"
+            android:text="@string/customer_service_text5"
             android:textSize="20dp"
             android:layout_marginTop="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="6. ios 어플도 있나요?"
+            android:text="@string/customer_service_text6"
             android:textSize="20dp"
             android:layout_marginTop="10dp"/>
 

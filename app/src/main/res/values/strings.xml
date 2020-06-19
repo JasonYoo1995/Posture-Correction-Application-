@@ -100,8 +100,21 @@
     <string name="instruction_explanation_7">나의 자세 기록을 일간/주간/월간/연간으로 확인할 수 있어요</string>
     <string name="instruction_explanation_8">바른 자세를 위한 운동법과 다양한 컨텐츠를 볼 수 있어요</string>
 
+    <string name="text_initial">바른 자세를 위한 퍼스널 트레이너</string>
+    <string name="text_profile">사용자 닉네임</string>
 
-<!--         ===========================================  ENGLISH STRINGS  ===========================================-->
+    <string name="text_device_information1">제품명 : CLYP</string>
+    <string name="text_device_information2">제품번호: 1234-5678</string>
+    <string name="text_device_information3">버전 : 3.6.1</string>
+
+    <string name="customer_service_text1">1. 연결이 안됩니다</string>
+    <string name="customer_service_text2">2. 어떻게 착용하는지 모르겠습니다</string>
+    <string name="customer_service_text3">3. 배터리는 얼마나 지속되나요?</string>
+    <string name="customer_service_text4">4. 앱데이터가 다 날라갔어요</string>
+    <string name="customer_service_text5">5. 다른 부위에 장착해도 되나요?</string>
+    <string name="customer_service_text6">6. ios 어플도 있나요?</string>
+
+    <!--         ===========================================  ENGLISH STRINGS  ===========================================-->
 
 <!--    <string name="app_name">CYLP</string>-->
 <!--    <string name="title_contents">Contents</string>-->
@@ -127,12 +140,12 @@
 
 <!--    <string name="string1">Contents</string>-->
 <!--    <string name="string2">Bookmark</string>-->
-<!--    <string name="string3">라운드숄더교정루틴A</string>-->
-<!--    <string name="string4">거북목교정법</string>-->
-<!--    <string name="string5">[후기]5분만에 라운드 숄더, 굽은등 펴기</string>-->
-<!--    <string name="string6">거북목교정!페인랩이말하는교정이야기</string>-->
-<!--    <string name="string7">하루10분!전신자세교정</string>-->
-<!--    <string name="string8">어깨통증도수치료2부</string>-->
+<!--    <string name="string3">Round Shoulder Correction Routine A</string>-->
+<!--    <string name="string4">Turtle Neck Correction</string>-->
+<!--    <string name="string5">[Comment] Straightening in 5 minutes</string>-->
+<!--    <string name="string6">The story of correcting turtle neck!</string>-->
+<!--    <string name="string7">10 minutes a day! Correcting whole body posture</string>-->
+<!--    <string name="string8">manual therapy of omalgia II</string>-->
 
 <!--    <string name="create_account">Create Account</string>-->
 
@@ -203,5 +216,19 @@
 <!--    <string name="instruction_explanation_6">Adjust the alerting degree, starting time, period for when your body is slouched. And if needed, set on or off the vibration.</string>-->
 <!--    <string name="instruction_explanation_7">You can see your records daily/weekly/monthly/annual basis.</string>-->
 <!--    <string name="instruction_explanation_8">You can see various contents concerned with posture such as right exercise posture.</string>-->
+
+<!--    <string name="text_initial">Personal Trainer for Right Posture</string>-->
+<!--    <string name="text_profile">Nickname</string>-->
+
+<!--    <string name="text_device_information1">Product Name : CLYP</string>-->
+<!--    <string name="text_device_information2">Product Number : 1234-5678</string>-->
+<!--    <string name="text_device_information3">Version : 3.6.1</string>-->
+
+<!--    <string name="customer_service_text1">1. Bluetooth connection doesn\'t work</string>-->
+<!--    <string name="customer_service_text2">2. I don\'t know how to wear the device</string>-->
+<!--    <string name="customer_service_text3">3. How long does the battery last?</string>-->
+<!--    <string name="customer_service_text4">4. The data in my app have disappeared</string>-->
+<!--    <string name="customer_service_text5">5. Can I wear the device on other parts of my body?</string>-->
+<!--    <string name="customer_service_text6">6. Is there an iPhone app?</string>-->
 
 </resources>

@@ -15,21 +15,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="제품명: CLYP"
+            android:text="@string/text_device_information1"
             android:textSize="20dp"
             android:layout_marginTop="150dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="제품번호: 1234-5678"
+            android:text="@string/text_device_information2"
             android:textSize="20dp"
             android:layout_marginTop="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="버전: 3.6.1"
+            android:text="@string/text_device_information3"
             android:textSize="20dp"
             android:layout_marginTop="10dp"/>
     </LinearLayout>
