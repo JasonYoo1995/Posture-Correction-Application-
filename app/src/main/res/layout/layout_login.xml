@@ -32,24 +32,24 @@
         android:paddingHorizontal="60dp"
         android:orientation="vertical">
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/sign_in_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ID"
             android:inputType="textEmailAddress"
             android:imeActionId="1"
-            android:imeActionLabel="다음"
+            android:imeActionLabel="입력"
             android:imeOptions="actionGo"
             android:maxLines="1"
             android:singleLine="true"
             android:layout_marginBottom="10dp"/>
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/sign_in_pw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
             android:imeActionId="2"
-            android:imeActionLabel="로그인"
+            android:imeActionLabel="완료"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
             android:maxLines="1"

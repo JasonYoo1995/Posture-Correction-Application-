@@ -33,6 +33,7 @@
 
     <string name="sign_up">회원 가입</string>
     <string name="sign_in">로그인</string>
+    <string name="sign_up_cancel">취소</string>
     <string name="create_account">계정 생성</string>
 
     <string name="bubble_text_state0">시작 버튼을 눌러봐!</string>
@@ -153,6 +154,7 @@
 
 <!--    <string name="sign_up">Sign Up</string>-->
 <!--    <string name="sign_in">Sign In</string>-->
+<!--    <string name="sign_up_cancel">Cancel</string>-->
 <!--    <string name="create_account">Create</string>-->
 
 <!--    <string name="bubble_text_state0">Press start button!</string>-->
