@@ -7,6 +7,7 @@
     <string name="device_information">기기 정보</string>
     <string name="instruction">사용 방법</string>
     <string name="customer_service">고객 지원</string>
+    <string name="log_out">로그아웃</string>
     <string name="drawer_open">drawer_open</string>
     <string name="drawer_close">drawer_close</string>
 
@@ -30,6 +31,8 @@
     <string name="string7">하루10분!전신자세교정</string>
     <string name="string8">어깨통증도수치료2부</string>
 
+    <string name="sign_up">회원 가입</string>
+    <string name="sign_in">로그인</string>
     <string name="create_account">계정 생성</string>
 
     <string name="bubble_text_state0">시작 버튼을 눌러봐!</string>
@@ -124,6 +127,7 @@
 <!--    <string name="device_information">Device Information</string>-->
 <!--    <string name="instruction">Instruction</string>-->
 <!--    <string name="customer_service">Customer Support</string>-->
+<!--    <string name="log_out">Log Out</string>-->
 <!--    <string name="drawer_open">drawer_open</string>-->
 <!--    <string name="drawer_close">drawer_close</string>-->
 
@@ -147,7 +151,9 @@
 <!--    <string name="string7">10 minutes a day! Correcting whole body posture</string>-->
 <!--    <string name="string8">manual therapy of omalgia II</string>-->
 
-<!--    <string name="create_account">Create Account</string>-->
+<!--    <string name="sign_up">Sign Up</string>-->
+<!--    <string name="sign_in">Sign In</string>-->
+<!--    <string name="create_account">Create</string>-->
 
 <!--    <string name="bubble_text_state0">Press start button!</string>-->
 <!--    <string name="bubble_text_state1">The most ideal posture is..?</string>-->

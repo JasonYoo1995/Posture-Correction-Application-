@@ -32,24 +32,34 @@
         android:paddingHorizontal="60dp"
         android:orientation="vertical">
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/sign_up_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ID"
             android:inputType="textEmailAddress"
             android:imeActionId="1"
-            android:imeActionLabel="다음"
+            android:imeActionLabel="입력"
             android:imeOptions="actionGo"
             android:maxLines="1"
-            android:singleLine="true"
-            android:layout_marginBottom="10dp"/>
+            android:singleLine="true"/>
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/sign_up_pw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
             android:imeActionId="2"
-            android:imeActionLabel="로그인"
+            android:imeActionLabel="입력"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true"/>
+        <EditText
+            android:id="@+id/sign_up_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:imeActionId="2"
+            android:imeActionLabel="완료"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
             android:maxLines="1"
@@ -77,26 +87,12 @@
 
             <Button
                 android:background="@drawable/shape_background_round"
-                android:id="@+id/layout_sign_up_btn"
-                android:layout_weight="2"
+                android:id="@+id/create_account_btn"
+                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorWhite"
-                android:text="@string/sign_up"
-                android:layout_gravity="center"
-                android:textSize="17sp"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <Button
-                android:background="@drawable/shape_background_round"
-                android:id="@+id/layout_sign_in_btn"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:text="@string/sign_in"
+                android:text="@string/create_account"
                 android:layout_gravity="center"
                 android:textSize="17sp"/>
             <View

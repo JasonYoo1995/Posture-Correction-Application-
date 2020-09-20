@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 
 import androidx.core.view.MotionEventCompat;
 
+// 초기 화면
 public class InitialActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,7 +17,7 @@ public class InitialActivity extends Activity {
 
         int action = MotionEventCompat.getActionMasked(event);
 
-        switch(action) {
+        switch(action) { // 아무데나 클릭하면 다음 화면
             case (MotionEvent.ACTION_DOWN) :
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);

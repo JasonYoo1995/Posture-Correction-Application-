@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     OptionDialog optionDialog;
 
-    // bluetooth
+    // bluetooth ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
     BluetoothAdapter mBluetoothAdapter;
     Set<BluetoothDevice> mPairedDevices;
 
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     final static int BT_MESSAGE_READ = 2;
     final static int BT_CONNECTING_STATUS = 3;
     final static UUID BT_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-    // bluetooth
+    // bluetooth ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
         addBottomTabEvents();
 
-        // bluetooth
+        // bluetooth ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         mBluetoothHandler = new Handler(){
             public void handleMessage(android.os.Message msg){
@@ -111,12 +111,12 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 //                    homeFragment.setPostureData("x축 : "+x+"\ny축 : "+y);
-                    homeFragment.setImageDegree(y, x);
+                    homeFragment.setAvatarAngle(y, x);
 //                    System.out.println(x +"/"+y);
                 }
             }
         };
-        // bluetooth
+        // bluetooth ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
     }
 
     private void addBottomTabEvents() {
@@ -208,6 +208,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.customer_service_menu:
                         startActivity(new Intent(MainActivity.this, CustomerServiceActivity.class));
                         break;
+                    case R.id.log_out_menu:
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        finish();
+                        break;
                     default:
                         return true;
                 }
@@ -221,7 +225,8 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
     }
 
-    // bluetooth
+    // bluetooth ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+
     void bluetoothOn() {
         if(mBluetoothAdapter == null) {
             Toast.makeText(getApplicationContext(), "블루투스를 지원하지 않는 기기입니다.", Toast.LENGTH_SHORT).show();
@@ -244,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "블루투스가 비활성화 되었습니다.", Toast.LENGTH_SHORT).show();
 //            mTvBluetoothStatus.setText("비활성화");
 
-            homeFragment.initializeHome();
+            homeFragment.setState0();
         }
         else {
 //            Toast.makeText(getApplicationContext(), "블루투스가 이미 비활성화 되어 있습니다.", Toast.LENGTH_SHORT).show();
@@ -261,17 +266,17 @@ public class MainActivity extends AppCompatActivity {
 //                    Toast.makeText(getApplicationContext(), "취소", Toast.LENGTH_SHORT).show();
 //                    mTvBluetoothStatus.setText("비활성화");
 
-                    homeFragment.initializeHome();
+                    homeFragment.setState0();
                 }
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
     void listPairedDevices() {
-        if (mBluetoothAdapter.isEnabled()) {
-            mPairedDevices = mBluetoothAdapter.getBondedDevices();
-
-            if (mPairedDevices.size() > 0) {
+        if (mBluetoothAdapter.isEnabled()) { // 블루투스가 켜져있으면
+            mPairedDevices = mBluetoothAdapter.getBondedDevices(); // 페어링 가능한 모든 블루투스 장치들을 리턴
+            if (mPairedDevices.size() > 0) { // 페어링 가능한 장치가 하나라도 있으면
+                // 페어링 가능한 모든 장치의 목록을 띄움
 //                AlertDialog.Builder builder = new AlertDialog.Builder(this);
 //                builder.setTitle("장치 선택");
 //
@@ -292,14 +297,16 @@ public class MainActivity extends AppCompatActivity {
 //                AlertDialog alert = builder.create();
 //                alert.show();
                 connectSelectedDevice("HC-06");
-            } else {
+            }
+            else { // 페어링 가능한 장치가 하나도 없으면
                 Toast.makeText(getApplicationContext(), "페어링된 장치가 없습니다.", Toast.LENGTH_SHORT).show();
             }
         }
-        else {
+        else { // 블루투스가 꺼져있으면
             Toast.makeText(getApplicationContext(), "블루투스가 비활성화 되어 있습니다.", Toast.LENGTH_SHORT).show();
         }
     }
+
     void connectSelectedDevice(String selectedDeviceName) {
         for(BluetoothDevice tempDevice : mPairedDevices) {
             if (selectedDeviceName.equals(tempDevice.getName())) {
@@ -318,7 +325,7 @@ public class MainActivity extends AppCompatActivity {
 //            e.printStackTrace();
             Toast.makeText(getApplicationContext(), "기기와 연결을 실패했습니다.", Toast.LENGTH_SHORT).show();
 
-            homeFragment.initializeHome();
+            homeFragment.setState0();
         }
     }
 
@@ -369,6 +376,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // bluetooth
+    // bluetooth ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
 }

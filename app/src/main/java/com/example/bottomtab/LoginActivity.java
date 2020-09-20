@@ -12,9 +12,17 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_login);
 
-        findViewById(R.id.layout_login_btn).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.layout_sign_up_btn).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // 계정 생성 버튼 누르면 다음 화면
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.layout_sign_in_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { // 계정 생성 버튼 누르면 다음 화면
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();

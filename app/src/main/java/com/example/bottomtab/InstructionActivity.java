@@ -11,13 +11,13 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 public class InstructionActivity extends Activity {
-    ImageView currentArrow;
-    int page = 1;
-    Button prevButton;
-    Button nextButton;
-    TextView title;
-    ImageView exitButton;
-    ViewFlipper viewFlipper;
+    ViewFlipper viewFlipper; // 화면 전환 매니저
+    ImageView currentArrow; // 화살표 이미지 : 현재 몇 번째 탭인지 가리킴
+    ImageView exitButton; // 닫기 버튼
+    TextView title; // 제목
+    Button prevButton; // 이전 버튼
+    Button nextButton; // 다음 버튼
+    int page = 1; // 페이지 번호 (1~8)
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,19 +26,19 @@ public class InstructionActivity extends Activity {
         nextButton = findViewById(R.id.next);
         prevButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // 이전 버튼
                 page = page-1;
                 moveArrow(page);
             }
         });
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // 다음 버튼
                 page = page+1;
                 moveArrow(page);
             }
         });
-        addBottomTabEvents();
+        addBottomTabEvents(); // 탭 버튼에 이벤트 추가
         title = findViewById(R.id.title_instruction);
         exitButton = findViewById(R.id.button_instruction_exit);
         exitButton.setOnClickListener(new View.OnClickListener() {
@@ -46,18 +46,17 @@ public class InstructionActivity extends Activity {
             public void onClick(View v) {
                 finish();
             }
-        });
-
+        }); // 닫기
         viewFlipper = findViewById(R.id.page_area);
     }
 
     private void addBottomTabEvents() {
-        prevButton.setClickable(false);
-        currentArrow = findViewById(R.id.arrow1);
+        prevButton.setClickable(false); // 1번 화면에서는 이전 버튼 클릭 불가
+        currentArrow = findViewById(R.id.arrow1); // 현재는 1번 탭을 가리킴
         findViewById(R.id.instruction_tab1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moveArrow(1);
+                moveArrow(1); // 1페이지로 화살표 이동
             }
         });
         findViewById(R.id.instruction_tab2).setOnClickListener(new View.OnClickListener() {
@@ -111,7 +110,7 @@ public class InstructionActivity extends Activity {
         viewFlipper.setDisplayedChild(page-1);
         switch (page){
             case 1:
-                prevButton.setClickable(false);
+                prevButton.setClickable(false); // 1번 화면에서는 이전 버튼 클릭 불가
                 this.page = 1;
                 findViewById(R.id.arrow1).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow1);
@@ -154,7 +153,7 @@ public class InstructionActivity extends Activity {
                 title.setText(R.string.instruction_title_7);
                 break;
             case 8:
-                nextButton.setClickable(false);
+                nextButton.setClickable(false); // 8번 화면에서는 다음 버튼 클릭 불가
                 this.page = 8;
                 findViewById(R.id.arrow8).setVisibility(View.VISIBLE);
                 currentArrow = findViewById(R.id.arrow8);

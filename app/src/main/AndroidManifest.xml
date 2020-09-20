@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bottomtab">
 
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 
     <application
         android:allowBackup="true"
@@ -23,7 +23,7 @@
 
         <activity
             android:name=".LoginActivity"
-            android:label="@string/create_account">
+            android:label="@string/sign_up">
         </activity>
 
         <activity
@@ -46,6 +46,10 @@
         <activity
             android:name=".CustomerServiceActivity"
             android:label="@string/customer_service">
+        </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:label="@string/sign_up">
         </activity>
     </application>
 
