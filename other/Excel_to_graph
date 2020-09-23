@@ -1,0 +1,29 @@
+import pandas as pd
+import seaborn as sns;sns.set()
+import matplotlib.pyplot as plt
+import os
+
+path = 'C:/Users/s_sparrow42/Desktop/ahap'
+file_list = os.listdir(path)
+
+for file in file_list:
+    data = pd.read_excel(path+'/'+file)
+
+    plt.rcParams["font.family"] = 'Malgun Gothic'
+    plt.rcParams["font.size"] = 16
+    plt.rcParams["figure.figsize"] = (10, 2)
+
+    data['x'].plot(color='#ff0000')
+    data['y'].plot(color='#0000ff')
+    plt.grid()
+    plt.legend()
+    plt.title(file)
+    plt.xlabel('시간')
+    plt.ylabel('크기')
+    #plt.show()
+
+    plt.savefig(file+'.png', dpi=300)
+    plt.close()
+    #sns.lineplot(x='Unnamed: 0', y='x', data=data)
+    #sns.relplot(x='Unnamed: 0', y='x', kind='line', data=data)
+    #plt.show(sns)
