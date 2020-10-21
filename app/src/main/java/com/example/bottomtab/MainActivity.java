@@ -208,6 +208,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.customer_service_menu:
                         startActivity(new Intent(MainActivity.this, CustomerServiceActivity.class));
                         break;
+                    case R.id.friend_menu:
+                        startActivity(new Intent(MainActivity.this, FriendActivity.class));
+                        break;
                     case R.id.log_out_menu:
                         startActivity(new Intent(MainActivity.this, LoginActivity.class));
                         finish();

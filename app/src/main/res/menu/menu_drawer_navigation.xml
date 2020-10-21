@@ -17,6 +17,10 @@
         android:title="@string/customer_service"
         />
     <item
+        android:id="@+id/friend_menu"
+        android:title="@string/friend"
+        />
+    <item
         android:id="@+id/log_out_menu"
         android:title="@string/log_out"
         />
