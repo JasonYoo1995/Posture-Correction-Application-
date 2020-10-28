@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment {
     public void setAvatarAngle(int front, int side){
         int frontAngle = 90-front;
         int sideAngle = 90-side;
-        if(frontAngle<-90 || frontAngle>90 || frontAngle<-90 || sideAngle>90) return; // 회전 각도 범위는 180도로 제한
+        if(frontAngle<-90 || sideAngle>90 || frontAngle<-90 || sideAngle>90) return; // 회전 각도 범위는 180도로 제한
         avatarFront.setRotation(frontAngle); // 각도 적용
         avatarSide.setRotation(sideAngle); // 각도 적용
     }

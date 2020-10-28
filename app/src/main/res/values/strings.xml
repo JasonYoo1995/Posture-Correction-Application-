@@ -7,6 +7,7 @@
     <string name="device_information">기기 정보</string>
     <string name="instruction">사용 방법</string>
     <string name="customer_service">고객 지원</string>
+    <string name="friend">친구</string>
     <string name="log_out">로그아웃</string>
     <string name="drawer_open">drawer_open</string>
     <string name="drawer_close">drawer_close</string>
@@ -128,6 +129,7 @@
 <!--    <string name="device_information">Device Information</string>-->
 <!--    <string name="instruction">Instruction</string>-->
 <!--    <string name="customer_service">Customer Support</string>-->
+<!--    <string name="friend">Friend</string>-->
 <!--    <string name="log_out">Log Out</string>-->
 <!--    <string name="drawer_open">drawer_open</string>-->
 <!--    <string name="drawer_close">drawer_close</string>-->
