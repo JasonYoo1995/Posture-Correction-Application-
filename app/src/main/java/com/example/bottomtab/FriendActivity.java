@@ -19,7 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -31,12 +30,14 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class FriendActivity extends AppCompatActivity {
     LinearLayout list_layout;
     EditText editText;
     LayoutInflater layout_inflater;
     LinearLayout.LayoutParams params;
+    String user_id;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,15 +50,31 @@ public class FriendActivity extends AppCompatActivity {
         params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT);
         params.setMargins(0, 0, 0, 40);
 
+        // MainActivity로부터 유저 아이디를 받아옴
+        Bundle extras = getIntent().getExtras();
+        user_id = extras.getString("user_id");
+
         Button btn = (Button)findViewById(R.id.search_friend);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 JSONTask task = new JSONTask();
-                task.setData(new Data("id", editText.getText().toString()));
-                task.execute("http://3.92.215.113:4001/friend_search");//AsyncTask 시작시킴
+                Data[] data = { new Data("user_id", user_id), new Data("friend_id", editText.getText().toString()) };
+                task.setData(data);
+                task.execute("http://3.92.215.113:4001/add_friend");
             }
         });
+
+        // 친구 목록 load
+        JSONTask2 task = new JSONTask2();
+        task.setData(new Data("user_id", user_id));
+        task.execute("http://3.92.215.113:4001/get_friend");
+    }
+
+    private void setList(ArrayList<String> list){
+        for(int i=0; i<list.size(); i++){
+            addFriend(list.get(i));
+        }
     }
 
     private void addFriend(String name){ // 새 친구를 list_layout에 추가
@@ -84,6 +101,93 @@ public class FriendActivity extends AppCompatActivity {
     }
 
     class JSONTask extends AsyncTask<String, String, String> {
+        Data[] data;
+        public void setData(Data[] data){
+            this.data = data;
+        }
+
+        @Override
+        protected String doInBackground(String... urls) {
+            try {
+                //JSONObject를 만들고 key value 형식으로 값을 저장해준다.
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.accumulate(data[0].key, data[0].value);
+                jsonObject.accumulate(data[1].key, data[1].value);
+                HttpURLConnection con = null;
+                BufferedReader reader = null;
+                try{
+                    //URL url = new URL("http://3.92.215.113:4001/users");
+                    URL url = new URL(urls[0]);
+                    //연결을 함
+                    con = (HttpURLConnection) url.openConnection();
+                    con.setRequestMethod("POST");
+                    con.setRequestProperty("Cache-Control", "no-cache");//캐시 설정
+                    con.setRequestProperty("Content-Type", "application/json");//application JSON 식으로 전송
+                    con.setRequestProperty("Accept", "text/html");//서버에 response 데이터를 html로 받음
+                    con.setDoOutput(true);//Outstream으로 post 데이터를 넘겨주겠다는 의미
+                    con.setDoInput(true);//Inputstream으로 서버로부터 응답을 받겠다는 의미
+                    con.connect();
+                    //서버로 보내기위해서 스트림 만듬
+                    OutputStream outStream = con.getOutputStream();
+                    //버퍼를 생성하고 넣음
+                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outStream));
+                    writer.write(jsonObject.toString());
+                    writer.flush();
+                    writer.close();//버퍼를 받아줌
+
+                    //서버로 부터 데이터를 받음
+                    InputStream stream = con.getInputStream();
+                    reader = new BufferedReader(new InputStreamReader(stream));
+                    StringBuffer buffer = new StringBuffer();
+                    String line = "";
+                    while((line = reader.readLine()) != null){
+                        buffer.append(line);
+                    }
+                    return buffer.toString();//서버로 부터 받은 값을 리턴해줌 아마 OK!!가 들어올것임
+                } catch (MalformedURLException e){
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if(con != null){
+                        con.disconnect();
+                    }
+                    try {
+                        if(reader != null){
+                            reader.close();//버퍼를 닫아줌
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            if(result.equals("-1")){
+                makeToast("회원이 존재하지 않습니다.");
+            }
+            else{
+//                makeToast("친구가 추가되었습니다.");
+                String string = "";
+                if(result==null || result.equals("")) return;
+                try {
+                    JSONObject jsonObject = new JSONObject(result);
+                    string = jsonObject.getString("id");
+                    //makeToast(string);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                addFriend(string);
+            }
+        }
+    }
+
+    class JSONTask2 extends AsyncTask<String, String, String> {
         Data data;
         public void setData(Data data){
             this.data = data;
@@ -150,21 +254,19 @@ public class FriendActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            if(result.equals("-1")){
-                makeToast("회원이 존재하지 않습니다.");
-            }
-            else{
-//                makeToast("친구가 추가되었습니다.");
-                String string = "";
-                if(result==null || result.equals("")) return;
-                try {
-                    JSONObject jsonObject = new JSONObject(result);
-                    string = jsonObject.getString("id");
-                    makeToast(string);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            String string = "";
+            if(result==null || result.equals("")) return;
+            try {
+                ArrayList<String> friend_list = new ArrayList<>();
+                JSONArray jsonArray = new JSONArray(result);
+                for (int i=0; i<jsonArray.length(); i++){
+                    JSONObject jsonObject = new JSONObject(jsonArray.get(i).toString());
+                    string = jsonObject.getString("to");
+                    friend_list.add(string);
                 }
-                addFriend(string);
+                setList(friend_list);
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         }
     }

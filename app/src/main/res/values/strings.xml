@@ -119,6 +119,24 @@
     <string name="customer_service_text5">5. 다른 부위에 장착해도 되나요?</string>
     <string name="customer_service_text6">6. ios 어플도 있나요?</string>
 
+    <string-array name="time">
+        <item>Choose</item>
+        <item>Main</item>
+        <item>Day</item>
+        <item>Week</item>
+        <item>Month</item>
+        <item>Year</item>
+    </string-array>
+
+    <string name="statistics_button1">My record</string>
+    <string name="statistics_button2">Other record</string>
+    <string name="statistics_button3">DAILY REPORT</string>
+    <string name="statistics_button4">WEEKLY REPORT</string>
+    <string name="statistics_button5">MONTHLY REPORT</string>
+    <string name="statistics_button6">ANNUAL REPORT</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <!--         ===========================================  ENGLISH STRINGS  ===========================================-->
 
 <!--    <string name="app_name">CYLP</string>-->
