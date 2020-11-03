@@ -47,6 +47,7 @@
         </activity>
         <activity
             android:name=".CustomerServiceActivity"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/customer_service">
         </activity>
         <activity
@@ -56,6 +57,18 @@
         <activity
             android:name=".SignUpActivity"
             android:label="@string/sign_up">
+        </activity>
+        <activity
+            android:name=".StatisticsDayActivity">
+        </activity>
+        <activity
+            android:name=".StatisticsWeekActivity">
+        </activity>
+        <activity
+            android:name=".StatisticsMonthActivity">
+        </activity>
+        <activity
+            android:name=".StatisticsYearActivity">
         </activity>
     </application>
 

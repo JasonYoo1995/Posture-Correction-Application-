@@ -3,6 +3,7 @@ package com.example.bottomtab;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
@@ -27,6 +29,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
 
@@ -60,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
     final static UUID BT_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     // bluetooth ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
+    String user_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         contentsFragment = new ContentsFragment();
         homeFragment = new HomeFragment(this);
-        statisticsFragment = new StatisticsFragment();
+        statisticsFragment = new StatisticsFragment(this);
 
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -117,6 +122,10 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         // bluetooth ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
+        // LoginActivity로부터 로그인 시 유저 아이디를 받아옴
+        Bundle extras = getIntent().getExtras();
+        user_id = extras.getString("user_id");
     }
 
     private void addBottomTabEvents() {
@@ -209,7 +218,9 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, CustomerServiceActivity.class));
                         break;
                     case R.id.friend_menu:
-                        startActivity(new Intent(MainActivity.this, FriendActivity.class));
+                        Intent intent = new Intent(MainActivity.this, FriendActivity.class);
+                        intent.putExtra("user_id", user_id);
+                        startActivity(intent);
                         break;
                     case R.id.log_out_menu:
                         startActivity(new Intent(MainActivity.this, LoginActivity.class));
@@ -280,26 +291,27 @@ public class MainActivity extends AppCompatActivity {
             mPairedDevices = mBluetoothAdapter.getBondedDevices(); // 페어링 가능한 모든 블루투스 장치들을 리턴
             if (mPairedDevices.size() > 0) { // 페어링 가능한 장치가 하나라도 있으면
                 // 페어링 가능한 모든 장치의 목록을 띄움
-//                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//                builder.setTitle("장치 선택");
-//
-//                mListPairedDevices = new ArrayList<String>();
-//                for (BluetoothDevice device : mPairedDevices) {
-//                    mListPairedDevices.add(device.getName());
-//                    //mListPairedDevices.add(device.getName() + "\n" + device.getAddress());
-//                }
-//                final CharSequence[] items = mListPairedDevices.toArray(new CharSequence[mListPairedDevices.size()]);
-//                mListPairedDevices.toArray(new CharSequence[mListPairedDevices.size()]);
-//
-//                builder.setItems(items, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int item) {
-//                        connectSelectedDevice(items[item].toString());
-//                    }
-//                });
-//                AlertDialog alert = builder.create();
-//                alert.show();
-                connectSelectedDevice("HC-06");
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("장치 선택");
+
+                ArrayList<String> mListPairedDevices = new ArrayList<String>();
+                for (BluetoothDevice device : mPairedDevices) {
+                    mListPairedDevices.add(device.getName());
+                    //mListPairedDevices.add(device.getName() + "\n" + device.getAddress());
+                }
+                final CharSequence[] items = mListPairedDevices.toArray(new CharSequence[mListPairedDevices.size()]);
+                mListPairedDevices.toArray(new CharSequence[mListPairedDevices.size()]);
+
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int item) {
+                        connectSelectedDevice(items[item].toString());
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+
+//                connectSelectedDevice("HC-06");
             }
             else { // 페어링 가능한 장치가 하나도 없으면
                 Toast.makeText(getApplicationContext(), "페어링된 장치가 없습니다.", Toast.LENGTH_SHORT).show();
@@ -311,8 +323,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void connectSelectedDevice(String selectedDeviceName) {
+//        Log.d("ABCD","waiting");
         for(BluetoothDevice tempDevice : mPairedDevices) {
             if (selectedDeviceName.equals(tempDevice.getName())) {
+//                Log.d("ABCD","same");
                 mBluetoothDevice = tempDevice;
                 break;
             }
@@ -325,9 +339,8 @@ public class MainActivity extends AppCompatActivity {
             mThreadConnectedBluetooth.start();
             mBluetoothHandler.obtainMessage(BT_CONNECTING_STATUS, 1, -1).sendToTarget();
         } catch (IOException e) {
-//            e.printStackTrace();
+            e.printStackTrace();
             Toast.makeText(getApplicationContext(), "기기와 연결을 실패했습니다.", Toast.LENGTH_SHORT).show();
-
             homeFragment.setState0();
         }
     }

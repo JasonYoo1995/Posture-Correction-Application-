@@ -32,6 +32,9 @@ public class LoginActivity extends AppCompatActivity {
         IDText = findViewById(R.id.sign_in_id);
         PWText = findViewById(R.id.sign_in_pw);
 
+        IDText.setText("Jason");
+        PWText.setText("a");
+
         findViewById(R.id.layout_sign_up_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { // 계정 생성 버튼 누르면 다음 화면
@@ -134,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
             else{
                 makeToast("로그인 되었습니다");
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra("user_id", IDText.getText().toString());
                 startActivity(intent);
                 finish();
             }
