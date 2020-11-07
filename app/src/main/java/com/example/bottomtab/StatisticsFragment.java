@@ -32,7 +32,6 @@ import java.util.Locale;
 public class StatisticsFragment extends Fragment {
     MainActivity mainActivity;
     View rootView;
-    int current_position = 1;
 
     StatisticsFragment(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
