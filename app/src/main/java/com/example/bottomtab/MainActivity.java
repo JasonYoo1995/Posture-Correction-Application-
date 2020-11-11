@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
     final static int BT_REQUEST_ENABLE = 1;
     final static int BT_MESSAGE_READ = 2;
     final static int BT_CONNECTING_STATUS = 3;
-    final static UUID BT_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    final static UUID BT_UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
     // bluetooth ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
-    String user_id;
+    public String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,9 +115,9 @@ public class MainActivity extends AppCompatActivity {
                             System.out.println("Number Format exception");
                         }
                     }
-//                    homeFragment.setPostureData("x축 : "+x+"\ny축 : "+y);
+                    homeFragment.setPostureData("x축 : "+x+"\ny축 : "+y);
                     homeFragment.setAvatarAngle(y, x);
-//                    System.out.println(x +"/"+y);
+                    System.out.println(x +"/"+y);
                 }
             }
         };
@@ -153,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 bottomNavigationView.setSelectedItemId(R.id.statistics_menu);
                 setTitle(R.string.title_statistics);
                 fragmentManager.beginTransaction().replace(R.id.fragment_container, statisticsFragment).commit();
+                statisticsFragment.user_id = user_id;
             }
         });
     }
@@ -368,7 +369,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             byte[] buffer = new byte[1024];
             int bytes;
-
+            System.out.println("----------------------");
             while (true) {
                 try {
                     bytes = mmInStream.available();

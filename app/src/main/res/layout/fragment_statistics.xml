@@ -18,7 +18,14 @@
             android:id="@+id/layout_statistics1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/temp_text"
+                android:text="여기에 서버 응답 결과 출력"/>
 
             <TextView
                 android:id="@+id/Btn1"
@@ -118,6 +125,5 @@
 
 
     </RelativeLayout>
-
 
 </ScrollView>

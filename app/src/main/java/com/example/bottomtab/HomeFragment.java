@@ -68,7 +68,7 @@ public class HomeFragment extends Fragment {
         });
         setBubbleText(); // 현재 state에 맞는 말풍선 설정
         setButtonProperty(); // 현재 state에 맞는 버튼 설정
-//        postureData = rootView.findViewById(R.id.received_posture_data);
+        postureData = rootView.findViewById(R.id.received_posture_data);
 
         return rootView;
     }
@@ -88,11 +88,12 @@ public class HomeFragment extends Fragment {
         if(frontAngle<-90 || sideAngle>90 || frontAngle<-90 || sideAngle>90) return; // 회전 각도 범위는 180도로 제한
         avatarFront.setRotation(frontAngle); // 각도 적용
         avatarSide.setRotation(sideAngle); // 각도 적용
+        bubbleView.setText("LR : "+ sideAngle +"  FB :"+ frontAngle);
     }
 
-//    public void setPostureData(String string){
-//        postureData.setText(string);
-//    }
+    public void setPostureData(String string){
+        postureData.setText(string);
+    }
 
     private void toggleState(){ // 상태 전환
         if(BluetoothAdapter.getDefaultAdapter().isEnabled()){ // 블루투스가 활성화 되어있는 경우
