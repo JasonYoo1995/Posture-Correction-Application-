@@ -1,0 +1,58 @@
+app.get("/posture", (req, res) => {
+    console.log("GET");
+    var inputData;
+    req.on("data", (data) => {
+        inputData = JSON.parse(data);
+    });
+    req.on("end", () => {
+        if (!inputData.month) { // Year
+            let sql_query = "select Month, AVG(LR), AVG(FB) from Posture where id = '" + inputData.id + "' and Year = " + Number(inputData.year) + " GROUP BY Month;";
+            pool.query(sql_query, function(err, result, fields) {
+                if (err) {
+                    throw err;
+                } else {
+                    //console.log(result);
+                    res.write(JSON.stringify(result), function() {
+                        res.end();
+                    });
+                }
+            });
+        } else if (!inputData.day) { // Month
+            let sql_query = "select Day, AVG(LR), AVG(FB) from Posture where id = '" + inputData.id + "' and Month = " + Number(inputData.month) + " GROUP BY Day;";
+            pool.query(sql_query, function(err, result, fields) {
+                if (err) {
+                    throw err;
+                } else {
+                    //console.log(result);
+                    res.write(JSON.stringify(result), function() {
+                        res.end();
+                    });
+                }
+            });
+        } else if (!inputData.hour) { // Day
+            let sql_query = "select Hour, AVG(LR), AVG(FB) from Posture where id = '" + inputData.id + "' and Day = " + Number(inputData.day) + " GROUP BY Hour;";
+            pool.query(sql_query, function(err, result, fields) {
+                if (err) {
+                    throw err;
+                } else {
+                    //console.log(result);
+                    res.write(JSON.stringify(result), function() {
+                        res.end();
+                    });
+                }
+            });
+        } else { // Hour
+            let sql_query = "select Min, AVG(LR), AVG(FB) from Posture where id = '" + inputData.id + "' and Hour = " + Number(inputData.hour) + " GROUP BY Min;";
+            pool.query(sql_query, function(err, result, fields) {
+                if (err) {
+                    throw err;
+                } else {
+                    //console.log(result);
+                    res.write(JSON.stringify(result), function() {
+                        res.end();
+                    });
+                }
+            });
+        }
+    });
+});

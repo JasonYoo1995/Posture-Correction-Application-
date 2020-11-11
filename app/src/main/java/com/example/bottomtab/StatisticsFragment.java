@@ -2,6 +2,7 @@ package com.example.bottomtab;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +26,16 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,6 +44,7 @@ import java.util.Locale;
 public class StatisticsFragment extends Fragment {
     MainActivity mainActivity;
     View rootView;
+    String user_id;
 
     StatisticsFragment(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -108,6 +121,27 @@ public class StatisticsFragment extends Fragment {
         TextView text1 = (TextView) rootView.findViewById(R.id.text1);
         double sum=0;
         String format =  new String("Current Date: yyyy-MM-dd");
+
+
+
+
+        // [서버 통신]
+        String hour = "20";
+        JSONTaskGET task = new JSONTaskGET();
+        //String parameter = "?id="+user_id+"&year="+year+"&month="+"&day="+"&hour="; // 특정 year의 기록을 month 단위로 받아옴
+        //String parameter = "?id="+user_id+"&year="+year+"&month="+month+"&day="+"&hour="; // 특정 month의 기록을 day 단위로 받아옴
+        String parameter = "?id="+user_id+"&year="+year+"&month="+month+"&day="+day+"&hour="; // 특정 day의 기록을 hour 단위로 받아옴
+        //String parameter = "?id="+user_id+"&year="+year+"&month="+month+"&day="+day+"&hour="+hour; // 특정 hour의 기록을 minute 단위로 받아옴
+        task.execute("http://3.92.215.113:4001/posture"+parameter);
+        /*
+        <DB에 있는 기록 기간>
+        2018년 5월 31일 2시 20분 ~ 29분
+        2020년 9월 26일 19시 40분 ~ 21시 19분
+        */
+
+
+
+
         textView.setText("Current Date: "+year+"-"+(month+1)+"-"+day);
         if(year==2020&&month==9&&day==24) {
 //                    Intent intent = new Intent(MainActivity.this, DayActivity.class);
@@ -208,11 +242,97 @@ public class StatisticsFragment extends Fragment {
                 text1.setText("Master of Posture! Your will is like steel!!");
         }
         else{
-
             chart.clear();
             chart.setNoDataText("There's no record of this day.");
             text1.setText("There's no evaluate of this day.");
 
         }
+    }
+
+    class JSONTaskGET extends AsyncTask<String, String, String> {
+        ArrayList<Data> data = new ArrayList<>();
+        public void setData(ArrayList<Data> data){
+            this.data = data;
+        }
+
+        @Override
+        protected String doInBackground(String... urls) {
+            try {
+                //JSONObject를 만들고 key value 형식으로 값을 저장해준다.
+                JSONObject jsonObject = new JSONObject();
+                for (int i=0; i<data.size(); i++){
+                    jsonObject.accumulate(data.get(i).key, data.get(i).value);
+                }
+                HttpURLConnection con = null;
+                BufferedReader reader = null;
+                try{
+                    URL url = new URL(urls[0]);
+                    //연결을 함
+                    con = (HttpURLConnection) url.openConnection();
+                    con.setRequestMethod("GET");
+                    con.setDoInput(true);//Inputstream으로 서버로부터 응답을 받겠다는 의미
+                    con.connect();
+                    //서버로 부터 데이터를 받음
+                    reader = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
+                    StringBuffer buffer = new StringBuffer();
+                    String line = "";
+                    while((line = reader.readLine()) != null){
+                        buffer.append(line);
+                    }
+                    return buffer.toString();//서버로 부터 받은 값을 리턴해줌 아마 OK!!가 들어올것임
+                } catch (MalformedURLException e){
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if(con != null){
+                        con.disconnect();
+                    }
+                    try {
+                        if(reader != null){
+                            reader.close();//버퍼를 닫아줌
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            // [서버 통신]
+            String string = "";
+            if(result==null || result.equals("")) return;
+            try {
+                JSONArray jsonResult = new JSONArray(result);
+                if(jsonResult==null) return;
+
+                String temp = new JSONObject(jsonResult.getString(0)).toString().substring(2,4);
+                String key = null;
+                if(temp.equals("Mo")) key = "Month";
+                else if(temp.equals("Da")) key = "Day";
+                else if(temp.equals("Ho")) key = "Hour";
+                else if(temp.equals("Mi")) key = "Min";
+
+                for(int i=0; i<jsonResult.length(); i++){
+                    JSONObject parsedResult = new JSONObject(jsonResult.getString(i));
+                    string += "<"+key+" = "+parsedResult.getString(key)+">\n";
+                    string += "LR = "+parsedResult.getString("AVG(LR)")+"\n";
+                    string += "FB = "+parsedResult.getString("AVG(FB)")+"\n";
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            if(string.equals("")) string = "결과 없음";
+            ((TextView)rootView.findViewById(R.id.temp_text)).setText(string);
+        }
+    }
+
+    private void makeToast(String string){
+        Toast.makeText(getContext(), string, Toast.LENGTH_SHORT).show();
     }
 }
