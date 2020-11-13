@@ -1,4 +1,4 @@
-package com.example.bottomtab;
+package com.example.bottomtab.etc;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.bottomtab.R;
 
 import org.json.JSONObject;
 

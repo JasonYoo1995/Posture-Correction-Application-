@@ -1,13 +1,15 @@
-package com.example.bottomtab;
+package com.example.bottomtab.etc;
 
 import android.bluetooth.BluetoothAdapter;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,10 +18,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.bottomtab.R;
+import com.example.bottomtab.bluetooth.ReceiveThread;
+
 public class HomeFragment extends Fragment {
     MainActivity mainActivity; // MainActivity에 있는 블루투스 연결을 제어하기 위한 용도
     View rootView; // HomeFragment 자기 자신에 대한 객체 (Activity와 달리 Fragment는 this로 해결되지 않는 부분이 있음)
-    TextView postureData; // 실시간 기울기 정보(x축, y축)를 아바타 오른쪽에 텍스트로 띄움
     TextView bubbleView; // 아바타 상단의 말풍선
     ImageView avatarFront; // 정면 아바타
     ImageView avatarSide; // 측면 아바타
@@ -28,8 +32,16 @@ public class HomeFragment extends Fragment {
     Button measureButton; // 측정 버튼
     int state = 0; // HomeFragment의 3가지 상태 : 0 = 대기 상태, 1 = 영점 조절 중, 2 = 측정 중
 
+    Button receiveButton;
+    TextView mDataField;
+
+    boolean receiveOn;
+    ReceiveThread receiveThread;
+
     HomeFragment(MainActivity mainActivity){
         this.mainActivity = mainActivity;
+        receiveOn = false;
+        receiveThread = new ReceiveThread(mainActivity);
     }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,7 +80,19 @@ public class HomeFragment extends Fragment {
         });
         setBubbleText(); // 현재 state에 맞는 말풍선 설정
         setButtonProperty(); // 현재 state에 맞는 버튼 설정
-        postureData = rootView.findViewById(R.id.received_posture_data);
+
+        receiveButton = rootView.findViewById(R.id.received_posture_data_in_home);
+        receiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                receiveOn = !receiveOn;
+                if(receiveOn) receiveThread.startReceive();
+                else receiveThread.stopReceive();
+            }
+        });
+        mDataField = rootView.findViewById(R.id.received_posture_data_text);
+        mainActivity.mGattServicesList = (ExpandableListView) rootView.findViewById(R.id.gatt_services_list);
+        mainActivity.mGattServicesList.setOnChildClickListener(mainActivity.servicesListClickListner);
 
         return rootView;
     }
@@ -77,35 +101,44 @@ public class HomeFragment extends Fragment {
         state = 0;
         setBubbleText();
         setButtonProperty();
-        setAvatarAngle(90,90);
+        setAvatarAngle("00.00,00.00");
     }
 
-    // 아바타 이미지의 각도 설정 : (정면 아바타 각도, 측면 아바타 각도)
-    // (input -> output) = (180도 -> -90도), (90도 -> 0도), (0도 -> 90도)
-    public void setAvatarAngle(int front, int side){
-        int frontAngle = 90-front;
-        int sideAngle = 90-side;
-        if(frontAngle<-90 || sideAngle>90 || frontAngle<-90 || sideAngle>90) return; // 회전 각도 범위는 180도로 제한
-        avatarFront.setRotation(frontAngle); // 각도 적용
-        avatarSide.setRotation(sideAngle); // 각도 적용
-        bubbleView.setText("LR : "+ sideAngle +"  FB :"+ frontAngle);
-    }
+    public void setAvatarAngle(String data){
+        String strFB = data.split(",")[0];
+        String strLR = data.split(",")[1];
+//        Log.d("strFB",strFB);
+//        Log.d("strLR",strLR);
+        String stringFB = strFB.split("\\.")[0];
+        String stringLR = strLR.split("\\.")[0];
+        Log.d("stringFB",stringFB);
+        Log.d("stringLR",stringLR);
 
-    public void setPostureData(String string){
-        postureData.setText(string);
+        int FB = Integer.parseInt(stringLR); // Left = -90 / Right = 90
+        int LR = Integer.parseInt(stringFB) * (-1); // Back = -90 / Front = 90
+
+        //mDataField.setText("앞뒤="+FB+" / 좌우="+LR);
+
+        if(FB<-90) FB = -90;
+        else if(FB> 90) FB =  90;
+        else if(LR<-90) LR = -90;
+        else if(LR> 90) LR =  90;
+
+        avatarFront.setRotation(FB); // 각도 적용
+        avatarSide.setRotation(LR); // 각도 적용
     }
 
     private void toggleState(){ // 상태 전환
         if(BluetoothAdapter.getDefaultAdapter().isEnabled()){ // 블루투스가 활성화 되어있는 경우
             if(state==0){
-                mainActivity.listPairedDevices(); // 페어링 가능한 장치들 중 우리 기기를 찾아서 연결
+                //mainActivity.listPairedDevices(); // 페어링 가능한 장치들 중 우리 기기를 찾아서 연결
             }
             if(state==1){
                 makeToast("영점 조절을 했습니다.");
             }
             if(state==2){
                 makeToast("기기와 연결을 해제했습니다.");
-                mainActivity.mThreadConnectedBluetooth.cancel(); // 기기와 연결 끊기
+                //mainActivity.mThreadConnectedBluetooth.cancel(); // 기기와 연결 끊기
                 setState0();
                 return;
             }
@@ -158,4 +191,5 @@ public class HomeFragment extends Fragment {
     private void makeToast(String string){ // 토스트
         Toast.makeText(this.getContext(), string, Toast.LENGTH_SHORT).show();
     }
+
 }

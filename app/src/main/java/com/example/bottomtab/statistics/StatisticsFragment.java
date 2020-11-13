@@ -1,4 +1,4 @@
-package com.example.bottomtab;
+package com.example.bottomtab.statistics;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,6 +18,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import com.example.bottomtab.etc.Data;
+import com.example.bottomtab.etc.MainActivity;
+import com.example.bottomtab.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarEntry;
@@ -44,9 +47,9 @@ import java.util.Locale;
 public class StatisticsFragment extends Fragment {
     MainActivity mainActivity;
     View rootView;
-    String user_id;
+    public String user_id;
 
-    StatisticsFragment(MainActivity mainActivity) {
+    public StatisticsFragment(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
     }
 
