@@ -37,6 +37,7 @@ public class HomeFragment extends Fragment {
 
     boolean receiveOn;
     ReceiveThread receiveThread;
+    TextView timeText;
 
     HomeFragment(MainActivity mainActivity){
         this.mainActivity = mainActivity;
@@ -94,6 +95,8 @@ public class HomeFragment extends Fragment {
         mainActivity.mGattServicesList = (ExpandableListView) rootView.findViewById(R.id.gatt_services_list);
         mainActivity.mGattServicesList.setOnChildClickListener(mainActivity.servicesListClickListner);
 
+        timeText = rootView.findViewById(R.id.time_text);
+
         return rootView;
     }
 
@@ -102,27 +105,28 @@ public class HomeFragment extends Fragment {
         setBubbleText();
         setButtonProperty();
         setAvatarAngle("00.00,00.00");
+        this.timeText.setText("00:00");
     }
 
-    public void setAvatarAngle(String data){
+    public void setAvatarAngle(String data) {
         String strFB = data.split(",")[0];
         String strLR = data.split(",")[1];
 //        Log.d("strFB",strFB);
 //        Log.d("strLR",strLR);
         String stringFB = strFB.split("\\.")[0];
         String stringLR = strLR.split("\\.")[0];
-        Log.d("stringFB",stringFB);
-        Log.d("stringLR",stringLR);
+        Log.d("stringFB", stringFB);
+        Log.d("stringLR", stringLR);
 
         int FB = Integer.parseInt(stringLR); // Left = -90 / Right = 90
         int LR = Integer.parseInt(stringFB) * (-1); // Back = -90 / Front = 90
 
         //mDataField.setText("앞뒤="+FB+" / 좌우="+LR);
 
-        if(FB<-90) FB = -90;
-        else if(FB> 90) FB =  90;
-        else if(LR<-90) LR = -90;
-        else if(LR> 90) LR =  90;
+        if (FB < -90) FB = -90;
+        else if (FB > 90) FB = 90;
+        else if (LR < -90) LR = -90;
+        else if (LR > 90) LR = 90;
 
         avatarFront.setRotation(FB); // 각도 적용
         avatarSide.setRotation(LR); // 각도 적용
@@ -131,14 +135,15 @@ public class HomeFragment extends Fragment {
     private void toggleState(){ // 상태 전환
         if(BluetoothAdapter.getDefaultAdapter().isEnabled()){ // 블루투스가 활성화 되어있는 경우
             if(state==0){
-                //mainActivity.listPairedDevices(); // 페어링 가능한 장치들 중 우리 기기를 찾아서 연결
+
             }
             if(state==1){
-                makeToast("영점 조절을 했습니다.");
+                receiveThread.startReceive();
+                mainActivity.startReceive();
             }
             if(state==2){
-                makeToast("기기와 연결을 해제했습니다.");
-                //mainActivity.mThreadConnectedBluetooth.cancel(); // 기기와 연결 끊기
+                receiveThread.stopReceive();
+                mainActivity.stopReceive();
                 setState0();
                 return;
             }

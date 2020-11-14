@@ -73,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
     private final String LIST_UUID = "UUID";
     private BluetoothGattCharacteristic mNotifyCharacteristic;
 
+    private boolean stop;
+    int time;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +108,34 @@ public class MainActivity extends AppCompatActivity {
 
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+
+        stop = true;
+        time = 0;
+
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                countTime();
+            }
+        };
+
+        class TimeRunnable implements Runnable {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (Exception e) {
+                        e.printStackTrace() ;
+                    }
+                    runOnUiThread(runnable) ;
+                }
+            }
+        }
+
+        TimeRunnable timeRunnable = new TimeRunnable() ;
+        Thread thread = new Thread(timeRunnable) ;
+        thread.start();
     }
 
     private void addBottomTabEvents() {
@@ -220,13 +251,36 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
     }
 
+    public void startReceive(){
+        stop = false;
+    }
+
+    public void stopReceive() {
+        this.stop = true;
+        time = 0;
+    }
+
+    public void countTime(){
+        if(stop) return;
+        this.time++;
+        int min = time/60;
+        int sec = time%60;
+        String time = cvt1to2(min)+":"+cvt1to2(sec);
+        homeFragment.timeText.setText(time);
+    }
+
+    public String cvt1to2(int time){
+        if(time<10) return "0"+time;
+        else return String.valueOf(time);
+    }
+
     void bluetoothOn() {
         if(mBluetoothAdapter == null) {
             Toast.makeText(getApplicationContext(), "블루투스를 지원하지 않는 기기입니다.", Toast.LENGTH_SHORT).show();
         }
         else {
-                Intent intentBluetoothEnable = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                startActivityForResult(intentBluetoothEnable, BT_REQUEST_ENABLE);
+            Intent intentBluetoothEnable = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(intentBluetoothEnable, BT_REQUEST_ENABLE);
         }
     }
 
@@ -258,7 +312,8 @@ public class MainActivity extends AppCompatActivity {
             case BT_SCAN:
                 if(resultCode==0){
                     try {
-                    mDeviceAddress = data.getStringExtra(DeviceControlActivity.EXTRAS_DEVICE_ADDRESS);
+                        makeToast("기기와 연결되었습니다");
+                        mDeviceAddress = data.getStringExtra(DeviceControlActivity.EXTRAS_DEVICE_ADDRESS);
                     }catch (Exception e){
                     }
                 }
@@ -432,31 +487,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public final ExpandableListView.OnChildClickListener servicesListClickListner =
-        new ExpandableListView.OnChildClickListener() {
-        @Override
-        public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
-                                    int childPosition, long id) {
-            if (mGattCharacteristics != null) {
-                final BluetoothGattCharacteristic characteristic =
-                        mGattCharacteristics.get(groupPosition).get(childPosition);
-                final int charaProp = characteristic.getProperties();
-                if ((charaProp | BluetoothGattCharacteristic.PROPERTY_READ) > 0) {
-                    if (mNotifyCharacteristic != null) {
-                        mBluetoothLeService.setCharacteristicNotification(
-                                mNotifyCharacteristic, false);
-                        mNotifyCharacteristic = null;
+            new ExpandableListView.OnChildClickListener() {
+                @Override
+                public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
+                                            int childPosition, long id) {
+                    if (mGattCharacteristics != null) {
+                        final BluetoothGattCharacteristic characteristic =
+                                mGattCharacteristics.get(groupPosition).get(childPosition);
+                        final int charaProp = characteristic.getProperties();
+                        if ((charaProp | BluetoothGattCharacteristic.PROPERTY_READ) > 0) {
+                            if (mNotifyCharacteristic != null) {
+                                mBluetoothLeService.setCharacteristicNotification(
+                                        mNotifyCharacteristic, false);
+                                mNotifyCharacteristic = null;
+                            }
+                            mBluetoothLeService.readCharacteristic(characteristic);
+                        }
+                        if ((charaProp | BluetoothGattCharacteristic.PROPERTY_NOTIFY) > 0) {
+                            mNotifyCharacteristic = characteristic;
+                            mBluetoothLeService.setCharacteristicNotification(
+                                    characteristic, true);
+                        }
+                        return true;
                     }
-                    mBluetoothLeService.readCharacteristic(characteristic);
+                    return false;
                 }
-                if ((charaProp | BluetoothGattCharacteristic.PROPERTY_NOTIFY) > 0) {
-                    mNotifyCharacteristic = characteristic;
-                    mBluetoothLeService.setCharacteristicNotification(
-                            characteristic, true);
-                }
-                return true;
-            }
-            return false;
-        }
-    };
+            };
 
 }

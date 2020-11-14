@@ -11,7 +11,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="0dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,17 +37,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.2">
-
-            <ImageView
-                android:id="@+id/battery_image"
-                android:layout_alignParentLeft="true"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="15dp"
-                android:scaleType="fitStart"
-                android:src="@drawable/ic_battery" />
-
         </LinearLayout>
 
         <RelativeLayout
@@ -90,7 +79,7 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_weight="1.1">
+            android:layout_weight="0.6">
             <ImageView
                 android:layout_gravity="center"
                 android:id="@+id/avatar_front"
@@ -119,6 +108,7 @@
             <TextView
                 android:layout_gravity="center"
                 android:text="00:00"
+                android:id="@+id/time_text"
                 android:textColor="@color/colorBlack"
                 android:textSize="35sp"
                 android:layout_width="wrap_content"
