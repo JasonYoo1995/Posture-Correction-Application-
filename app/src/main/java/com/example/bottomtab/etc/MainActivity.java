@@ -1,5 +1,6 @@
 package com.example.bottomtab.etc;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
@@ -9,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.Gravity;
@@ -35,9 +37,12 @@ import com.example.bottomtab.statistics.StatisticsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -76,6 +81,13 @@ public class MainActivity extends AppCompatActivity {
     private boolean stop;
     int time;
 
+    long last_time;
+    int avgLR, avgFB;
+    int count;
+
+    // 원격에 전송할 때까지만 기억
+    public SharedPreferences local_db_posture;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
 
         stop = true;
         time = 0;
+
+        local_db_posture = getSharedPreferences("Posture", Activity.MODE_PRIVATE);
 
         final Runnable runnable = new Runnable() {
             @Override
@@ -272,6 +286,48 @@ public class MainActivity extends AppCompatActivity {
     public String cvt1to2(int time){
         if(time<10) return "0"+time;
         else return String.valueOf(time);
+    }
+
+    private String int2String(int temp){ // 2글자 짜리 String으로 변환
+        if(temp<10) return "0"+temp;
+        else return Integer.toString(temp);
+    }
+
+    private String int3String(int temp){ // 3글자 짜리 String으로 변환
+        if(temp<10) return "00"+temp;
+        else if(temp<100) return "0"+temp;
+        else return Integer.toString(temp);
+    }
+
+    public void receivedRealTimeData(int LR, int FB){
+        LR+=90; // 0 ~ 180 // Left = 0 / Right = 180
+        FB+=90; // 0 ~ 180 // Front = 0 / Back = 180
+        long current_time = System.currentTimeMillis();
+        if(current_time - last_time >= 60000){ // 60초마다 저장
+//            System.out.println("time "+ String.valueOf(current_time - last_time));
+            last_time = current_time;
+
+            // save in local DB
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmm", Locale.KOREA);
+            String key = sdf.format(new Date());
+//            System.out.println("key= " + key);
+            SharedPreferences.Editor editor = local_db_posture.edit();
+            editor.putString(key, int3String(LR)+int3String(FB)).commit();
+
+//            System.out.println("LR "+ String.valueOf(LR));
+//            System.out.println("FB "+ String.valueOf(FB));
+            initializeTempData();
+        }
+        avgLR = (avgLR*count+LR)/(++count);
+        avgFB = (avgFB*count+FB)/(++count);
+    }
+
+    public void initializeTempData(){
+        // initialize temp data
+        last_time = System.currentTimeMillis();
+        avgLR = 90;
+        avgFB = 90;
+        count = 0;
     }
 
     void bluetoothOn() {
@@ -513,5 +569,6 @@ public class MainActivity extends AppCompatActivity {
                     return false;
                 }
             };
+
 
 }
