@@ -21,6 +21,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
 import java.util.ArrayList;
+
 //일간 그래프(꺽은선 그래프)
 public class StatisticsDayActivity extends AppCompatActivity {
     //Button btnBarChart,btnPieChart;
@@ -53,30 +54,30 @@ public class StatisticsDayActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    if(position==1){//Main화면에서 Main화면으로 =>변동없음
-                        finish();
-                    }
-                    else if(position==2){//일간으로 이동
-                        Intent I = new Intent(StatisticsDayActivity.this, StatisticsDayActivity.class);
-                        startActivity(I);
-                        finish();
-                    }
-                    else if(position==3){//주간으로 이동
-                        Intent I = new Intent(StatisticsDayActivity.this, StatisticsWeekActivity.class);
-                        startActivity(I);
-                        finish();
-                    }
-                    else if(position==4){//월간으로 이동
-                        Intent I = new Intent(StatisticsDayActivity.this, StatisticsMonthActivity.class);
-                        startActivity(I);
-                        finish();
-                    }
-                    else if (position == 5) {//연간으로 이동
-                        Intent I = new Intent(StatisticsDayActivity.this, StatisticsYearActivity.class);
-                        startActivity(I);
-                        finish();
-                    }
+                if(position==1){//Main화면에서 Main화면으로 =>변동없음
+                    finish();
                 }
+                else if(position==2){//일간으로 이동
+                    Intent I = new Intent(StatisticsDayActivity.this, StatisticsDayActivity.class);
+                    startActivity(I);
+                    finish();
+                }
+                else if(position==3){//주간으로 이동
+                    Intent I = new Intent(StatisticsDayActivity.this, StatisticsWeekActivity.class);
+                    startActivity(I);
+                    finish();
+                }
+                else if(position==4){//월간으로 이동
+                    Intent I = new Intent(StatisticsDayActivity.this, StatisticsMonthActivity.class);
+                    startActivity(I);
+                    finish();
+                }
+                else if (position == 5) {//연간으로 이동
+                    Intent I = new Intent(StatisticsDayActivity.this, StatisticsYearActivity.class);
+                    startActivity(I);
+                    finish();
+                }
+            }
 
 
             @Override
@@ -123,29 +124,11 @@ public class StatisticsDayActivity extends AppCompatActivity {
             day.add("5pm");
             day.add("6pm");
 
-//            LineDataSet lineDataSet=new LineDataSet(GoodBad,"Good Posture");
-//            LineDataSet lineDataSet_Friend=new LineDataSet(GoodBad_Friend,"Good Posture_Friend");
             chart.animateY(100);
 
 
             //그래프 구현
-//            ArrayList<ILineDataSet> lineDataSets=new ArrayList<>();
-//            lineDataSets.add(lineDataSet);
-//            lineDataSets.add(lineDataSet_Friend);
-//            LineData data = new LineData(day, lineDataSet);
-//            LineData data2 = new LineData(day,lineDataSet_Friend);
-//
-//            LineData Data = new LineData(day,lineDataSets);
-//            chart.setData(Data);
-//            lineDataSet.setDrawValues(true);
-//            lineDataSet.setColor(Color.BLUE);
-//            lineDataSet.setValueTextSize(10);
-//            lineDataSet.setValueTextColor(Color.BLACK);
-//
-//            lineDataSet_Friend.setColor(Color.RED);
-//            lineDataSet_Friend.setDrawValues(true);
-//            lineDataSet_Friend.setValueTextSize(10);
-//            lineDataSet_Friend.setValueTextColor(Color.BLACK);
+
 
             LineData data = new LineData(day);
             LineDataSet set = new LineDataSet(GoodBad,"User");
@@ -178,7 +161,7 @@ public class StatisticsDayActivity extends AppCompatActivity {
                 sumF +=GoodBad_Friend.get(i).getVal();
             }
             sumF=sumF/GoodBad_Friend.size();
-            
+
             //평균값을 친구의 데이터와 비교한다.
             if(sum<sumF)
                 textView.setText("Ooooops! Your posture is worse than your friend's. You look like a Luigi!");
@@ -210,18 +193,7 @@ public class StatisticsDayActivity extends AppCompatActivity {
             day.add("6pm");
 
             //그래프 구현
-//            LineDataSet lineDataSet=new LineDataSet(GoodBad,"Good Posture");
-//            chart.animateY(100);
-//            LineData data = new LineData(day,lineDataSet);
-//            chart.setData(data);
-//           // lineDataSet.setDrawFilled(true);
-//            lineDataSet.setColor(ColorTemplate.getHoloBlue());
-//            lineDataSet.setDrawValues(true);
-//            lineDataSet.setValueTextSize(10);
-//            lineDataSet.setColor(Color.BLUE);
-//            lineDataSet.setValueTextColor(Color.BLACK);
-//            lineDataSet.setHighLightColor(Color.RED);
-//            lineDataSet.setHighlightLineWidth(1.0f);
+
             chart.animateY(100);
             LineData data = new LineData(day);
             LineDataSet set = new LineDataSet(GoodBad,"Friend");
