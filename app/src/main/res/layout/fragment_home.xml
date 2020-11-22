@@ -147,7 +147,7 @@
             android:layout_weight="0.2">
             <Button
                 android:id="@+id/send_to_remote"
-                android:text="전송"
+                android:text="@string/send_to_remote"
                 android:textSize="20dp"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
@@ -180,7 +180,7 @@
 
     <ImageView
         android:id="@+id/help_zero"
-        android:src="@drawable/ic_help_zero"
+        android:src="@drawable/ic_help_zero_eng"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="20dp"
         android:scaleType="centerInside"

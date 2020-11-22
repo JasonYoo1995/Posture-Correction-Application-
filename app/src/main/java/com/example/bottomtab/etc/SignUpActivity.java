@@ -44,15 +44,15 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(IDText.getText().toString().equals("")){
-                    makeToast("아이디를 입력하세요");
+                    makeToast(getResources().getString(R.string.fill_id));
                     return;
                 }
                 else if(PWText.getText().toString().equals("")){
-                    makeToast("비밀번호를 입력하세요");
+                    makeToast(getResources().getString(R.string.fill_pw));
                     return;
                 }
                 else if(nameText.getText().toString().equals("")){
-                    makeToast("이름을 입력하세요");
+                    makeToast(getResources().getString(R.string.fill_name));
                     return;
                 }
 
@@ -140,10 +140,10 @@ public class SignUpActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             if(result.equals("-1")){
-                makeToast("아이디가 중복됩니다");
+                makeToast(getResources().getString(R.string.id_duplicate));
             }
             else{
-                makeToast("회원 가입이 되셨습니다");
+                makeToast(getResources().getString(R.string.sign_up_done));
                 finish();
             }
         }

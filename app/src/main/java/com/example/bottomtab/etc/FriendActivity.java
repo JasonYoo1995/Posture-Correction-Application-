@@ -229,7 +229,7 @@ public class FriendActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             if(result.equals("-1")){
-                makeToast("회원이 존재하지 않습니다.");
+                //makeToast("회원이 존재하지 않습니다.");
             }
             else{
 //                makeToast("친구가 추가되었습니다.");
@@ -316,7 +316,7 @@ public class FriendActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            makeToast("삭제되었습니다");
+            //makeToast("삭제되었습니다");
         }
     }
 

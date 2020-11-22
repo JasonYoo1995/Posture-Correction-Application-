@@ -134,10 +134,10 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             if(result.equals("-1")){
-                makeToast("회원 정보가 불일치합니다");
+                makeToast(getResources().getString(R.string.not_correct));
             }
             else{
-                makeToast("로그인 되었습니다");
+                makeToast(getResources().getString(R.string.log_in_done));
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 intent.putExtra("user_id", IDText.getText().toString());
                 startActivity(intent);

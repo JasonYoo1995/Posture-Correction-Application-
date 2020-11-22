@@ -343,7 +343,7 @@ public class MainActivity extends AppCompatActivity {
     void bluetoothOff() {
         if (mBluetoothAdapter.isEnabled()) {
             mBluetoothAdapter.disable();
-            Toast.makeText(getApplicationContext(), "블루투스가 비활성화 되었습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.bluetooth_off), Toast.LENGTH_SHORT).show();
 
             homeFragment.setState0();
             homeFragment.receiveThread.stopReceive();
@@ -357,7 +357,7 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case BT_REQUEST_ENABLE:
                 if (resultCode == RESULT_OK) { // 블루투스 활성화를 확인을 클릭하였다면
-                    Toast.makeText(getApplicationContext(), "블루투스가 활성화 되었습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.bluetooth_on), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, DeviceScanActivity.class);
                     startActivityForResult(intent, BT_SCAN);
                 }
@@ -368,7 +368,7 @@ public class MainActivity extends AppCompatActivity {
             case BT_SCAN:
                 if(resultCode==0){
                     try {
-                        makeToast("기기와 연결되었습니다");
+                        makeToast(getResources().getString(R.string.connected_with_device));
                         mDeviceAddress = data.getStringExtra(DeviceControlActivity.EXTRAS_DEVICE_ADDRESS);
                     }catch (Exception e){
                     }

@@ -147,7 +147,7 @@ public class HomeFragment extends Fragment {
         if(status == NetworkStatus.TYPE_MOBILE || status == NetworkStatus.TYPE_WIFI){
             return true;
         }else {
-            makeToast("인터넷을 연결하고 다시 시도하세요");
+            makeToast(getResources().getString(R.string.retry_after_internet_on));
             return false;
         }
     }
@@ -210,7 +210,7 @@ public class HomeFragment extends Fragment {
             setButtonProperty();
         }
         else { // 블루투스가 비활성화 되어있는 경우
-            makeToast("블루투스를 켜고 다시 시도하세요.");
+            makeToast(getResources().getString(R.string.retry_after_bluetooth_on));
             setState0();
         }
     }
