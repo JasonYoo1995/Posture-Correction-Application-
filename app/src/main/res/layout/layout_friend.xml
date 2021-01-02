@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="6"
-        android:text="검색"
+        android:text="Search Friend"
         android:autoSizeTextType="uniform"
         android:gravity="center"
         android:layout_gravity="center"/>
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:text="아이디"/>
+            android:text="ID"/>
         <EditText
             android:id="@+id/friend_edit_text"
             android:layout_width="200dp"
@@ -35,7 +35,7 @@
             android:lines="1"/>
         <Button
             android:id="@+id/search_friend"
-            android:text="추가"
+            android:text="Add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="6"
-        android:text="친구 목록"
+        android:text="Friend List"
         android:autoSizeTextType="uniform"
         android:gravity="center"
         android:layout_gravity="center"
@@ -70,14 +70,14 @@
         android:layout_weight="20">
         <Button
             android:id="@+id/friend_record"
-            android:text="조회"
+            android:text="Record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="7dp"
             />
         <Button
             android:id="@+id/friend_delete"
-            android:text="삭제"
+            android:text="Delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />

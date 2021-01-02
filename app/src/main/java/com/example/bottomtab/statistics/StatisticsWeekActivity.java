@@ -1,4 +1,4 @@
-package com.example.bottomtab;
+package com.example.bottomtab.statistics;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,6 +10,7 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bottomtab.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
