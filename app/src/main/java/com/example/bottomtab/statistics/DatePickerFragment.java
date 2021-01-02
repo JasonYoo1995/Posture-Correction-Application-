@@ -1,4 +1,4 @@
-package com.example.bottomtab;
+package com.example.bottomtab.statistics;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -16,7 +16,7 @@ import java.util.Calendar;
  */
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     StatisticsFragment statisticsFragment;
-    DatePickerFragment(StatisticsFragment statisticsFragment){
+    public DatePickerFragment(StatisticsFragment statisticsFragment){
         this.statisticsFragment = statisticsFragment;
     }
 

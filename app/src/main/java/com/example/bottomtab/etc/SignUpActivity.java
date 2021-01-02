@@ -1,14 +1,14 @@
-package com.example.bottomtab;
+package com.example.bottomtab.etc;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.bottomtab.R;
 
 import org.json.JSONObject;
 
@@ -23,39 +23,47 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class LoginActivity extends AppCompatActivity {
-    EditText IDText, PWText;
+public class SignUpActivity extends AppCompatActivity {
+    EditText IDText, PWText, nameText;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_login);
+        setContentView(R.layout.layout_sign_up);
 
-        IDText = findViewById(R.id.sign_in_id);
-        PWText = findViewById(R.id.sign_in_pw);
+        IDText = findViewById(R.id.sign_up_id);
+        PWText = findViewById(R.id.sign_up_pw);
+        nameText = findViewById(R.id.sign_up_name);
 
-        IDText.setText("Jason");
-        PWText.setText("a");
-
-        findViewById(R.id.layout_sign_up_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { // 계정 생성 버튼 누르면 다음 화면
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.layout_sign_in_btn).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.sign_up_cancel_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JSONTask task = new JSONTask();
-                Data data[] = {new Data("id", IDText.getText().toString()), new Data("pw", PWText.getText().toString())};
-                task.setData(data);
-                task.execute("http://3.92.215.113:4001/sign_in");//AsyncTask 시작시킴
+                finish();
             }
         });
-    }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return true;
+        findViewById(R.id.create_account_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(IDText.getText().toString().equals("")){
+                    makeToast(getResources().getString(R.string.fill_id));
+                    return;
+                }
+                else if(PWText.getText().toString().equals("")){
+                    makeToast(getResources().getString(R.string.fill_pw));
+                    return;
+                }
+                else if(nameText.getText().toString().equals("")){
+                    makeToast(getResources().getString(R.string.fill_name));
+                    return;
+                }
+
+                JSONTask task = new JSONTask();
+                Data data[] = {new Data("id", IDText.getText().toString()),
+                        new Data("pw", PWText.getText().toString()),
+                        new Data("name", nameText.getText().toString())};
+                task.setData(data);
+                task.execute("http://3.92.215.113:4001/sign_up");//AsyncTask 시작시킴
+            }
+        });
     }
 
     private void makeToast(String string){
@@ -132,15 +140,13 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             if(result.equals("-1")){
-                makeToast("회원 정보가 불일치합니다");
+                makeToast(getResources().getString(R.string.id_duplicate));
             }
             else{
-                makeToast("로그인 되었습니다");
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                intent.putExtra("user_id", IDText.getText().toString());
-                startActivity(intent);
+                makeToast(getResources().getString(R.string.sign_up_done));
                 finish();
             }
         }
     }
 }
+

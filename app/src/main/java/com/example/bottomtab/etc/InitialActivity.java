@@ -1,4 +1,4 @@
-package com.example.bottomtab;
+package com.example.bottomtab.etc;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 
 import androidx.core.view.MotionEventCompat;
+
+import com.example.bottomtab.R;
 
 // 초기 화면
 public class InitialActivity extends Activity {

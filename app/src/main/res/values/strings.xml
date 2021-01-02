@@ -1,123 +1,277 @@
 <resources>
-    <string name="app_name">CYLP</string>
-    <string name="title_contents">정보 컨텐츠</string>
-    <string name="title_home">자세 측정</string>
-    <string name="title_statistics">통계 분석/예측</string>
-    <string name="profile">프로필</string>
-    <string name="device_information">기기 정보</string>
-    <string name="instruction">사용 방법</string>
-    <string name="customer_service">고객 지원</string>
-    <string name="friend">친구</string>
-    <string name="log_out">로그아웃</string>
+<!--    <string name="app_name">AHAP</string>-->
+<!--    <string name="title_contents">정보 컨텐츠</string>-->
+<!--    <string name="title_home">자세 측정</string>-->
+<!--    <string name="title_statistics">통계 분석/예측</string>-->
+<!--    <string name="profile">프로필</string>-->
+<!--    <string name="device_information">기기 정보</string>-->
+<!--    <string name="instruction">사용 방법</string>-->
+<!--    <string name="customer_service">고객 지원</string>-->
+<!--    <string name="friend">친구</string>-->
+<!--    <string name="log_out">로그아웃</string>-->
+<!--    <string name="drawer_open">drawer_open</string>-->
+<!--    <string name="drawer_close">drawer_close</string>-->
+
+<!--    <string name="Button1">나의기록</string>-->
+<!--    <string name="Button2">타인의기록</string>-->
+<!--    <string name="Button3">미래기록</string>-->
+
+<!--    <string-array name="array1">-->
+<!--        <item>일간</item>-->
+<!--        <item>주간</item>-->
+<!--        <item>월간</item>-->
+<!--        <item>연간</item>-->
+<!--    </string-array>-->
+
+<!--    <string name="string1">자세정보</string>-->
+<!--    <string name="string2">스크랩</string>-->
+<!--    <string name="string3">라운드숄더교정루틴A</string>-->
+<!--    <string name="string4">거북목교정법</string>-->
+<!--    <string name="string5">[후기]5분만에 라운드 숄더, 굽은등 펴기</string>-->
+<!--    <string name="string6">거북목교정!페인랩이말하는교정이야기</string>-->
+<!--    <string name="string7">하루10분!전신자세교정</string>-->
+<!--    <string name="string8">어깨통증도수치료2부</string>-->
+
+<!--    <string name="sign_up">회원 가입</string>-->
+<!--    <string name="sign_in">로그인</string>-->
+<!--    <string name="sign_up_cancel">취소</string>-->
+<!--    <string name="create_account">계정 생성</string>-->
+
+<!--    <string name="bubble_text_state0">시작 버튼을 눌러봐!</string>-->
+<!--    <string name="bubble_text_state1">가장 이상적인 자세는?</string>-->
+<!--    <string name="bubble_text_state2">자세를 측정 중이야!</string>-->
+<!--    <string name="button_text_state0">기록 시작</string>-->
+<!--    <string name="button_text_state1">바른 자세로\n설정</string>-->
+<!--    <string name="button_text_state2">기록 중지</string>-->
+
+<!--    <string name="tab_1">착용1</string>-->
+<!--    <string name="tab_2">착용2</string>-->
+<!--    <string name="tab_3">착용3</string>-->
+<!--    <string name="tab_4">착용4</string>-->
+<!--    <string name="tab_5">초기\n설정</string>-->
+<!--    <string name="tab_6">경고\n설정</string>-->
+<!--    <string name="tab_7">자세\n통계</string>-->
+<!--    <string name="tab_8">컨텐츠</string>-->
+
+<!--    <string name="prev">&lt; 이전</string>-->
+<!--    <string name="next">다음 &gt;</string>-->
+
+<!--    <string name="title_option">경고 옵션</string>-->
+
+<!--    <string name="instruction_title_1">부착 방법 안내</string>-->
+<!--    <string name="instruction_title_2">부착 방법 안내</string>-->
+<!--    <string name="instruction_title_3">부착 방법 안내</string>-->
+<!--    <string name="instruction_title_4">부착 방법 안내</string>-->
+<!--    <string name="instruction_title_5">측정 방법 안내</string>-->
+<!--    <string name="instruction_title_6">측정 방법 안내</string>-->
+<!--    <string name="instruction_title_7">자세 통계 분석</string>-->
+<!--    <string name="instruction_title_8">자세 정보 컨텐츠</string>-->
+<!--    <string name="warning_title">경고옵션</string>-->
+<!--    <string name="warning1">앞뒤경고각도</string>-->
+<!--    <string name="warning2">좌우경고각도</string>-->
+<!--    <string name="warning3">경고시작시간</string>-->
+<!--    <string name="warning4">경고주기</string>-->
+
+<!--    <string-array name="array2">-->
+<!--        <item>1초</item>-->
+<!--        <item>2초</item>-->
+<!--        <item>3초</item>-->
+<!--        <item>4초</item>-->
+<!--        <item>5초</item>-->
+<!--        <item>6초</item>-->
+<!--        <item>7초</item>-->
+<!--        <item>8초</item>-->
+<!--        <item>9초</item>-->
+<!--        <item>10초</item>-->
+<!--    </string-array>-->
+<!--    <string name="warning_subtitle">경고설정</string>-->
+<!--    <string name="warning_subtitle2">진동설정</string>-->
+<!--    <string name="warning_subtitle3">진동세기조절</string>-->
+
+<!--    <string-array name="array3">-->
+<!--        <item>아바타1</item>-->
+<!--        <item>아바타2</item>-->
+<!--        <item>아바타3</item>-->
+<!--        <item>아바타4</item>-->
+<!--        <item>아바타5</item>-->
+<!--    </string-array>-->
+
+<!--    <string name="instruction_explanation_1">본체와 동봉된 목걸이를 준비합니다</string>-->
+<!--    <string name="instruction_explanation_2">목걸이와 본체를 연결해주세요</string>-->
+<!--    <string name="instruction_explanation_3">본체가 목 뒤로 가게 목에 걸어주세요</string>-->
+<!--    <string name="instruction_explanation_4">착용이 끝났습니다</string>-->
+<!--    <string name="instruction_explanation_5">바른 자세를 유지하고 시작버튼을 누릅니다</string>-->
+<!--    <string name="instruction_explanation_6">경고 알림을 줄 나쁜 자세 각도와 경고 시작시간, 주기를 조정하고 필요하면 진동을 ON/OFF 합니다.</string>-->
+<!--    <string name="instruction_explanation_7">나의 자세 기록을 일간/주간/월간/연간으로 확인할 수 있어요</string>-->
+<!--    <string name="instruction_explanation_8">바른 자세를 위한 운동법과 다양한 컨텐츠를 볼 수 있어요</string>-->
+
+<!--    <string name="text_initial">바른 자세를 위한 퍼스널 트레이너</string>-->
+<!--    <string name="text_profile">사용자 닉네임</string>-->
+
+<!--    <string name="text_device_information1">제품명 : CLYP</string>-->
+<!--    <string name="text_device_information2">제품번호: 1234-5678</string>-->
+<!--    <string name="text_device_information3">버전 : 3.6.1</string>-->
+
+<!--    <string name="customer_service_text1">1. 연결이 안됩니다</string>-->
+<!--    <string name="customer_service_text2">2. 어떻게 착용하는지 모르겠습니다</string>-->
+<!--    <string name="customer_service_text3">3. 배터리는 얼마나 지속되나요?</string>-->
+<!--    <string name="customer_service_text4">4. 앱데이터가 다 날라갔어요</string>-->
+<!--    <string name="customer_service_text5">5. 다른 부위에 장착해도 되나요?</string>-->
+<!--    <string name="customer_service_text6">6. ios 어플도 있나요?</string>-->
+
+<!--    <string-array name="time">-->
+<!--        <item>Choose</item>-->
+<!--        <item>Main</item>-->
+<!--        <item>Day</item>-->
+<!--        <item>Week</item>-->
+<!--        <item>Month</item>-->
+<!--        <item>Year</item>-->
+<!--    </string-array>-->
+
+<!--    <string name="statistics_button1">My record</string>-->
+<!--    <string name="statistics_button2">Other record</string>-->
+<!--    <string name="statistics_button3">DAILY REPORT</string>-->
+<!--    <string name="statistics_button4">WEEKLY REPORT</string>-->
+<!--    <string name="statistics_button5">MONTHLY REPORT</string>-->
+<!--    <string name="statistics_button6">ANNUAL REPORT</string>-->
+
+<!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
+
+<!--    <string name="log_in_done">로그인 되었습니다</string>-->
+<!--    <string name="not_correct">회원 정보가 불일치합니다</string>-->
+<!--    <string name="send_to_remote">전송</string>-->
+<!--    <string name="retry_after_bluetooth_on">블루투스를 켜고 다시 시도하세요.</string>-->
+<!--    <string name="bluetooth_off">블루투스가 비활성화 되었습니다.</string>-->
+<!--    <string name="retry_after_internet_on">인터넷을 연결하고 다시 시도하세요</string>-->
+<!--    <string name="connected_with_device">기기와 연결되었습니다</string>-->
+<!--    <string name="bluetooth_on">블루투스가 활성화 되었습니다.</string>-->
+<!--    <string name="id_duplicate">아이디가 중복됩니다</string>-->
+<!--    <string name="sign_up_done">회원 가입이 되셨습니다</string>-->
+<!--    <string name="fill_id">아이디를 입력하세요</string>-->
+<!--    <string name="fill_pw">비밀번호를 입력하세요</string>-->
+<!--    <string name="fill_name">이름을 입력하세요</string>-->
+
+    <!--         ===========================================  ENGLISH STRINGS  ===========================================-->
+
+    <string name="app_name">AHAP</string>
+    <string name="title_contents">Contents</string>
+    <string name="title_home">Posture</string>
+    <string name="title_statistics">Analysis</string>
+    <string name="profile">Profile</string>
+    <string name="device_information">Device Information</string>
+    <string name="instruction">Instruction</string>
+    <string name="customer_service">Customer Support</string>
+    <string name="friend">Friend</string>
+    <string name="log_out">Log Out</string>
     <string name="drawer_open">drawer_open</string>
     <string name="drawer_close">drawer_close</string>
 
-    <string name="Button1">나의기록</string>
-    <string name="Button2">타인의기록</string>
-    <string name="Button3">미래기록</string>
+    <string name="Button1">My Records</string>
+    <string name="Button2">Other\'s Records</string>
+    <string name="Button3">Future Result</string>
 
     <string-array name="array1">
-        <item>일간</item>
-        <item>주간</item>
-        <item>월간</item>
-        <item>연간</item>
+        <item>day</item>
+        <item>week</item>
+        <item>month</item>
+        <item>year</item>
     </string-array>
 
-    <string name="string1">자세정보</string>
-    <string name="string2">스크랩</string>
-    <string name="string3">라운드숄더교정루틴A</string>
-    <string name="string4">거북목교정법</string>
-    <string name="string5">[후기]5분만에 라운드 숄더, 굽은등 펴기</string>
-    <string name="string6">거북목교정!페인랩이말하는교정이야기</string>
-    <string name="string7">하루10분!전신자세교정</string>
-    <string name="string8">어깨통증도수치료2부</string>
+    <string name="string1">Contents</string>
+    <string name="string2">Bookmark</string>
+    <string name="string3">Round Shoulder Correction Routine A</string>
+    <string name="string4">Turtle Neck Correction</string>
+    <string name="string5">[Comment] Straightening in 5 minutes</string>
+    <string name="string6">The story of correcting turtle neck!</string>
+    <string name="string7">10 minutes a day! Correcting whole body posture</string>
+    <string name="string8">manual therapy of omalgia II</string>
 
-    <string name="sign_up">회원 가입</string>
-    <string name="sign_in">로그인</string>
-    <string name="sign_up_cancel">취소</string>
-    <string name="create_account">계정 생성</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up_cancel">Cancel</string>
+    <string name="create_account">Create</string>
 
-    <string name="bubble_text_state0">시작 버튼을 눌러봐!</string>
-    <string name="bubble_text_state1">가장 이상적인 자세는?</string>
-    <string name="bubble_text_state2">자세를 측정 중이야!</string>
-    <string name="button_text_state0">기록 시작</string>
-    <string name="button_text_state1">바른 자세로\n설정</string>
-    <string name="button_text_state2">기록 중지</string>
+    <string name="bubble_text_state0">Press start button!</string>
+    <string name="bubble_text_state1">The most ideal posture is..?</string>
+    <string name="bubble_text_state2">It\'s measuring your posture now!</string>
+    <string name="button_text_state0">Start\nMeasuring</string>
+    <string name="button_text_state1">Set Right\nPosture</string>
+    <string name="button_text_state2">Stop</string>
 
-    <string name="tab_1">착용1</string>
-    <string name="tab_2">착용2</string>
-    <string name="tab_3">착용3</string>
-    <string name="tab_4">착용4</string>
-    <string name="tab_5">초기\n설정</string>
-    <string name="tab_6">경고\n설정</string>
-    <string name="tab_7">자세\n통계</string>
-    <string name="tab_8">컨텐츠</string>
+    <string name="tab_1">wear1</string>
+    <string name="tab_2">wear2</string>
+    <string name="tab_3">wear3</string>
+    <string name="tab_4">wear4</string>
+    <string name="tab_5">set</string>
+    <string name="tab_6">alert</string>
+    <string name="tab_7">analysis</string>
+    <string name="tab_8">contents</string>
 
-    <string name="prev">&lt; 이전</string>
-    <string name="next">다음 &gt;</string>
+    <string name="prev">&lt; prev</string>
+    <string name="next">next &gt;</string>
 
-    <string name="title_option">경고 옵션</string>
+    <string name="title_option">Alert Option</string>
 
-    <string name="instruction_title_1">부착 방법 안내</string>
-    <string name="instruction_title_2">부착 방법 안내</string>
-    <string name="instruction_title_3">부착 방법 안내</string>
-    <string name="instruction_title_4">부착 방법 안내</string>
-    <string name="instruction_title_5">측정 방법 안내</string>
-    <string name="instruction_title_6">측정 방법 안내</string>
-    <string name="instruction_title_7">자세 통계 분석</string>
-    <string name="instruction_title_8">자세 정보 컨텐츠</string>
-    <string name="warning_title">경고옵션</string>
-    <string name="warning1">앞뒤경고각도</string>
-    <string name="warning2">좌우경고각도</string>
-    <string name="warning3">경고시작시간</string>
-    <string name="warning4">경고주기</string>
+    <string name="instruction_title_1">How to wear</string>
+    <string name="instruction_title_2">How to wear</string>
+    <string name="instruction_title_3">How to wear</string>
+    <string name="instruction_title_4">How to wear</string>
+    <string name="instruction_title_5">How to measure</string>
+    <string name="instruction_title_6">How to measure</string>
+    <string name="instruction_title_7">Statistics &amp; Analysis</string>
+    <string name="instruction_title_8">Contents</string>
+    <string name="warning_title">Alert Option</string>
+    <string name="warning1">Vertical Alerting Degree</string>
+    <string name="warning2">Horizontal Alerting Degree</string>
+    <string name="warning3">Alerting\nStarting Time</string>
+    <string name="warning4">Alerting\nPeriod</string>
 
     <string-array name="array2">
-        <item>1초</item>
-        <item>2초</item>
-        <item>3초</item>
-        <item>4초</item>
-        <item>5초</item>
-        <item>6초</item>
-        <item>7초</item>
-        <item>8초</item>
-        <item>9초</item>
-        <item>10초</item>
+        <item>1sec</item>
+        <item>2sec</item>
+        <item>3sec</item>
+        <item>4sec</item>
+        <item>5sec</item>
+        <item>6sec</item>
+        <item>7sec</item>
+        <item>8sec</item>
+        <item>9sec</item>
+        <item>10sec</item>
     </string-array>
-    <string name="warning_subtitle">경고설정</string>
-    <string name="warning_subtitle2">진동설정</string>
-    <string name="warning_subtitle3">진동세기조절</string>
+    <string name="warning_subtitle">Alerting Option</string>
+    <string name="warning_subtitle2">Vibration Option</string>
+    <string name="warning_subtitle3">Vibration Intensity Adjustment</string>
 
     <string-array name="array3">
-        <item>아바타1</item>
-        <item>아바타2</item>
-        <item>아바타3</item>
-        <item>아바타4</item>
-        <item>아바타5</item>
+        <item>Avatar1</item>
+        <item>Avatar2</item>
+        <item>Avatar3</item>
+        <item>Avatar4</item>
+        <item>Avatar5</item>
     </string-array>
 
-    <string name="instruction_explanation_1">본체와 동봉된 목걸이를 준비합니다</string>
-    <string name="instruction_explanation_2">목걸이와 본체를 연결해주세요</string>
-    <string name="instruction_explanation_3">본체가 목 뒤로 가게 목에 걸어주세요</string>
-    <string name="instruction_explanation_4">착용이 끝났습니다</string>
-    <string name="instruction_explanation_5">바른 자세를 유지하고 시작버튼을 누릅니다</string>
-    <string name="instruction_explanation_6">경고 알림을 줄 나쁜 자세 각도와 경고 시작시간, 주기를 조정하고 필요하면 진동을 ON/OFF 합니다.</string>
-    <string name="instruction_explanation_7">나의 자세 기록을 일간/주간/월간/연간으로 확인할 수 있어요</string>
-    <string name="instruction_explanation_8">바른 자세를 위한 운동법과 다양한 컨텐츠를 볼 수 있어요</string>
+    <string name="instruction_explanation_1">Take the device and the necklace.</string>
+    <string name="instruction_explanation_2">Connect the device with the necklace.</string>
+    <string name="instruction_explanation_3">Wearing the necklace with the device on the back of your neck.</string>
+    <string name="instruction_explanation_4">It\'s done! </string>
+    <string name="instruction_explanation_5">Straighten up your upper body and press the start button.</string>
+    <string name="instruction_explanation_6">Adjust the alerting degree, starting time, period for when your body is slouched. And if needed, set on or off the vibration.</string>
+    <string name="instruction_explanation_7">You can see your records daily/weekly/monthly/annual basis.</string>
+    <string name="instruction_explanation_8">You can see various contents concerned with posture such as right exercise posture.</string>
 
-    <string name="text_initial">바른 자세를 위한 퍼스널 트레이너</string>
-    <string name="text_profile">사용자 닉네임</string>
+    <string name="text_initial">Personal Trainer for Right Posture</string>
+    <string name="text_profile">Nickname</string>
 
-    <string name="text_device_information1">제품명 : CLYP</string>
-    <string name="text_device_information2">제품번호: 1234-5678</string>
-    <string name="text_device_information3">버전 : 3.6.1</string>
+    <string name="text_device_information1">Product Name : CLYP</string>
+    <string name="text_device_information2">Product Number : 1234-5678</string>
+    <string name="text_device_information3">Version : 3.6.1</string>
 
-    <string name="customer_service_text1">1. 연결이 안됩니다</string>
-    <string name="customer_service_text2">2. 어떻게 착용하는지 모르겠습니다</string>
-    <string name="customer_service_text3">3. 배터리는 얼마나 지속되나요?</string>
-    <string name="customer_service_text4">4. 앱데이터가 다 날라갔어요</string>
-    <string name="customer_service_text5">5. 다른 부위에 장착해도 되나요?</string>
-    <string name="customer_service_text6">6. ios 어플도 있나요?</string>
+    <string name="customer_service_text1">1. Bluetooth connection doesn\'t work</string>
+    <string name="customer_service_text2">2. I don\'t know how to wear the device</string>
+    <string name="customer_service_text3">3. How long does the battery last?</string>
+    <string name="customer_service_text4">4. The data in my app have disappeared</string>
+    <string name="customer_service_text5">5. Can I wear the device on other parts of my body?</string>
+    <string name="customer_service_text6">6. Is there an iPhone app?</string>
 
     <string-array name="time">
         <item>Choose</item>
@@ -135,128 +289,36 @@
     <string name="statistics_button5">MONTHLY REPORT</string>
     <string name="statistics_button6">ANNUAL REPORT</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--         ===========================================  한글/영어 공통 ===========================================-->
+    <string name="ble_not_supported">BLE is not supported</string>
+    <string name="label_data">Data:</string>
+    <string name="label_device_address">Device address:</string>
+    <string name="label_state">State:</string>
+    <string name="no_data">No data</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="title_devices">BLE Device Scan</string>
+    <string name="error_bluetooth_not_supported">Bluetooth not supported.</string>
 
-    <!--         ===========================================  ENGLISH STRINGS  ===========================================-->
+    <string name="unknown_device">Unknown device</string>
+    <string name="unknown_characteristic">Unknown characteristic</string>
+    <string name="unknown_service">Unknown service</string>
 
-<!--    <string name="app_name">CYLP</string>-->
-<!--    <string name="title_contents">Contents</string>-->
-<!--    <string name="title_home">Posture</string>-->
-<!--    <string name="title_statistics">Analysis</string>-->
-<!--    <string name="profile">Profile</string>-->
-<!--    <string name="device_information">Device Information</string>-->
-<!--    <string name="instruction">Instruction</string>-->
-<!--    <string name="customer_service">Customer Support</string>-->
-<!--    <string name="friend">Friend</string>-->
-<!--    <string name="log_out">Log Out</string>-->
-<!--    <string name="drawer_open">drawer_open</string>-->
-<!--    <string name="drawer_close">drawer_close</string>-->
-
-<!--    <string name="Button1">My Records</string>-->
-<!--    <string name="Button2">Other\'s Records</string>-->
-<!--    <string name="Button3">Future Result</string>-->
-
-<!--    <string-array name="array1">-->
-<!--        <item>day</item>-->
-<!--        <item>week</item>-->
-<!--        <item>month</item>-->
-<!--        <item>year</item>-->
-<!--    </string-array>-->
-
-<!--    <string name="string1">Contents</string>-->
-<!--    <string name="string2">Bookmark</string>-->
-<!--    <string name="string3">Round Shoulder Correction Routine A</string>-->
-<!--    <string name="string4">Turtle Neck Correction</string>-->
-<!--    <string name="string5">[Comment] Straightening in 5 minutes</string>-->
-<!--    <string name="string6">The story of correcting turtle neck!</string>-->
-<!--    <string name="string7">10 minutes a day! Correcting whole body posture</string>-->
-<!--    <string name="string8">manual therapy of omalgia II</string>-->
-
-<!--    <string name="sign_up">Sign Up</string>-->
-<!--    <string name="sign_in">Sign In</string>-->
-<!--    <string name="sign_up_cancel">Cancel</string>-->
-<!--    <string name="create_account">Create</string>-->
-
-<!--    <string name="bubble_text_state0">Press start button!</string>-->
-<!--    <string name="bubble_text_state1">The most ideal posture is..?</string>-->
-<!--    <string name="bubble_text_state2">It\'s measuring your posture now!</string>-->
-<!--    <string name="button_text_state0">Start\nMeasuring</string>-->
-<!--    <string name="button_text_state1">Set Right\nPosture</string>-->
-<!--    <string name="button_text_state2">Stop</string>-->
-
-<!--    <string name="tab_1">wear1</string>-->
-<!--    <string name="tab_2">wear2</string>-->
-<!--    <string name="tab_3">wear3</string>-->
-<!--    <string name="tab_4">wear4</string>-->
-<!--    <string name="tab_5">set</string>-->
-<!--    <string name="tab_6">alert</string>-->
-<!--    <string name="tab_7">analysis</string>-->
-<!--    <string name="tab_8">contents</string>-->
-
-<!--    <string name="prev">&lt; prev</string>-->
-<!--    <string name="next">next &gt;</string>-->
-
-<!--    <string name="title_option">Alert Option</string>-->
-
-<!--    <string name="instruction_title_1">How to wear</string>-->
-<!--    <string name="instruction_title_2">How to wear</string>-->
-<!--    <string name="instruction_title_3">How to wear</string>-->
-<!--    <string name="instruction_title_4">How to wear</string>-->
-<!--    <string name="instruction_title_5">How to measure</string>-->
-<!--    <string name="instruction_title_6">How to measure</string>-->
-<!--    <string name="instruction_title_7">Statistics &amp; Analysis</string>-->
-<!--    <string name="instruction_title_8">Contents</string>-->
-<!--    <string name="warning_title">Alert Option</string>-->
-<!--    <string name="warning1">Vertical Alerting Degree</string>-->
-<!--    <string name="warning2">Horizontal Alerting Degree</string>-->
-<!--    <string name="warning3">Alerting\nStarting Time</string>-->
-<!--    <string name="warning4">Alerting\nPeriod</string>-->
-
-<!--    <string-array name="array2">-->
-<!--        <item>1sec</item>-->
-<!--        <item>2sec</item>-->
-<!--        <item>3sec</item>-->
-<!--        <item>4sec</item>-->
-<!--        <item>5sec</item>-->
-<!--        <item>6sec</item>-->
-<!--        <item>7sec</item>-->
-<!--        <item>8sec</item>-->
-<!--        <item>9sec</item>-->
-<!--        <item>10sec</item>-->
-<!--    </string-array>-->
-<!--    <string name="warning_subtitle">Alerting Option</string>-->
-<!--    <string name="warning_subtitle2">Vibration Option</string>-->
-<!--    <string name="warning_subtitle3">Vibration Intensity Adjustment</string>-->
-
-<!--    <string-array name="array3">-->
-<!--        <item>Avatar1</item>-->
-<!--        <item>Avatar2</item>-->
-<!--        <item>Avatar3</item>-->
-<!--        <item>Avatar4</item>-->
-<!--        <item>Avatar5</item>-->
-<!--    </string-array>-->
-
-<!--    <string name="instruction_explanation_1">Take the device and the necklace.</string>-->
-<!--    <string name="instruction_explanation_2">Connect the device with the necklace.</string>-->
-<!--    <string name="instruction_explanation_3">Wearing the necklace with the device on the back of your neck.</string>-->
-<!--    <string name="instruction_explanation_4">It\'s done! </string>-->
-<!--    <string name="instruction_explanation_5">Straighten up your upper body and press the start button.</string>-->
-<!--    <string name="instruction_explanation_6">Adjust the alerting degree, starting time, period for when your body is slouched. And if needed, set on or off the vibration.</string>-->
-<!--    <string name="instruction_explanation_7">You can see your records daily/weekly/monthly/annual basis.</string>-->
-<!--    <string name="instruction_explanation_8">You can see various contents concerned with posture such as right exercise posture.</string>-->
-
-<!--    <string name="text_initial">Personal Trainer for Right Posture</string>-->
-<!--    <string name="text_profile">Nickname</string>-->
-
-<!--    <string name="text_device_information1">Product Name : CLYP</string>-->
-<!--    <string name="text_device_information2">Product Number : 1234-5678</string>-->
-<!--    <string name="text_device_information3">Version : 3.6.1</string>-->
-
-<!--    <string name="customer_service_text1">1. Bluetooth connection doesn\'t work</string>-->
-<!--    <string name="customer_service_text2">2. I don\'t know how to wear the device</string>-->
-<!--    <string name="customer_service_text3">3. How long does the battery last?</string>-->
-<!--    <string name="customer_service_text4">4. The data in my app have disappeared</string>-->
-<!--    <string name="customer_service_text5">5. Can I wear the device on other parts of my body?</string>-->
-<!--    <string name="customer_service_text6">6. Is there an iPhone app?</string>-->
-
+    <string name="menu_connect">Connect</string>
+    <string name="menu_disconnect">Disconnect</string>
+    <string name="menu_scan">Scan</string>
+    <string name="menu_stop">Stop</string>
+    <string name="log_in_done">Logged in</string>
+    <string name="not_correct">Fill in correct information</string>
+    <string name="send_to_remote">Send</string>
+    <string name="retry_after_bluetooth_on">Retry after bluetooth is on</string>
+    <string name="bluetooth_off">Bluetooth turned off</string>
+    <string name="retry_after_internet_on">Retry after Internet on</string>
+    <string name="connected_with_device">Connected with device</string>
+    <string name="bluetooth_on">Bluetooth turned on</string>
+    <string name="id_duplicate">ID is duplicate</string>
+    <string name="sign_up_done">Account created</string>
+    <string name="fill_id">Fill in ID</string>
+    <string name="fill_pw">Fill in PW</string>
+    <string name="fill_name">Fill in name</string>
 </resources>
