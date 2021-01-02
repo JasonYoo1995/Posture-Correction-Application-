@@ -29,62 +29,50 @@
             </TextView>
 
             <HorizontalScrollView
-                android:id="@+id/horizontal_View"
                 android:layout_width="wrap_content"
-                android:layout_height="277dp"
+                android:layout_height="190dp"
                 android:scrollbarThumbHorizontal="@null">
 
                 <LinearLayout
                     android:id="@+id/lay2"
                     android:layout_width="wrap_content"
-                    android:layout_height="300dp"
+                    android:layout_height="wrap_content"
                     android:background="?android:attr/windowBackground"
                     android:orientation="horizontal">
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="344dp"
-                        android:layout_height="240dp"
+                        android:layout_width="150dp"
+                        android:layout_height="173dp"
+                        android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
                         android:layout_marginBottom="10dp"
                         app:cardCornerRadius="10dp">
+
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:orientation="vertical"
                             android:layout_marginLeft="0dp"
-                            android:layout_marginTop="0dp"
                             android:layout_marginRight="0dp"
-                            android:orientation="vertical">
+                            android:layout_marginTop="0dp">
 
-                            <!--                            <ImageView-->
-                            <!--                                android:layout_width="match_parent"-->
-                            <!--                                android:layout_height="110dp"-->
-                            <!--                                android:id="@+id/image4"-->
-                            <!--                                android:src="@drawable/contentpicture1">-->
-                            <!--                         </ImageView>-->
-                            <!--                            <kr.co.prnd.YouTubePlayerView-->
-                            <!--                                android:id="@+id/youtubeView"-->
-                            <!--                                android:layout_width="344dp"-->
-                            <!--                                android:layout_height="200dp"-->
-                            <!--                                app:fragment="com.example.test2.ContentsFragment"-->
-                            <!--                                app:videoId="qMtyhDDmJ-U" />-->
-
-                            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                                android:id="@+id/card_content_player_view"
+                            <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                android:layout_height="110dp"
+                                android:id="@+id/image4"
+                                android:src="@drawable/contentpicture1">
+                            </ImageView>
+
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/string3"
-                                android:textSize="20sp"></TextView>
+                                android:textSize="20sp">
+                            </TextView>
 
 
                         </LinearLayout>
@@ -93,11 +81,11 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="344dp"
-                        android:layout_height="240dp"
+                        android:layout_width="150dp"
+                        android:layout_height="173dp"
+                        android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
                         android:layout_marginBottom="10dp"
                         app:cardCornerRadius="10dp">
 
@@ -105,56 +93,37 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:orientation="vertical"
                             android:layout_marginLeft="0dp"
-                            android:layout_marginTop="0dp"
                             android:layout_marginRight="0dp"
-                            android:orientation="vertical">
+                            android:layout_marginTop="0dp">
 
-                            <!--                            <ImageView-->
-                            <!--                                android:id="@+id/image5"-->
-                            <!--                                android:layout_width="match_parent"-->
-                            <!--                                android:layout_height="110dp"-->
-                            <!--                                android:src="@drawable/contentpicture2">-->
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="110dp"
+                                android:id="@+id/image5"
+                                android:src="@drawable/contentpicture2">
 
-                            <!--                            </ImageView>-->
-                            <kr.co.prnd.YouTubePlayerView
-                                android:id="@+id/youtubeView2"
-                                android:layout_width="344dp"
-                                android:layout_height="200dp"
-                                app:fragment="com.example.test2.ContentsFragment"
-                                app:videoId="Io5NYpzfsEU" />
+                            </ImageView>
 
-                            <!--                            <com.google.android.youtube.player.YouTubeThumbnailView-->
-                            <!--                                android:id="@+id/video1"-->
-                            <!--                                android:layout_width="match_parent"-->
-                            <!--                                android:layout_height="110dp"-->
-                            <!--                                android:adjustViewBounds="true"-->
-                            <!--                                />-->
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/string4"
-                                android:textSize="20sp"></TextView>
+                                android:textSize="20sp">
+                            </TextView>
 
 
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
 
-                    <!--                    <androidx.cardview.widget.CardView-->
-                    <!--                        android:layout_width="150dp"-->
-                    <!--                        android:layout_height="173dp"-->
-                    <!--                        android:layout_marginLeft="10dp"-->
-                    <!--                        android:layout_marginTop="10dp"-->
-                    <!--                        android:layout_marginRight="10dp"-->
-                    <!--                        android:layout_marginBottom="10dp"-->
-                    <!--                        app:cardCornerRadius="10dp">-->
                     <androidx.cardview.widget.CardView
-                        android:layout_width="344dp"
-                        android:layout_height="240dp"
+                        android:layout_width="150dp"
+                        android:layout_height="173dp"
+                        android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
                         android:layout_marginBottom="10dp"
                         app:cardCornerRadius="10dp">
 
@@ -162,31 +131,25 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:orientation="vertical"
                             android:layout_marginLeft="0dp"
-                            android:layout_marginTop="0dp"
                             android:layout_marginRight="0dp"
-                            android:orientation="vertical">
+                            android:layout_marginTop="0dp">
 
-                            <!--                            <ImageView-->
-                            <!--                                android:id="@+id/image6"-->
-                            <!--                                android:layout_width="match_parent"-->
-                            <!--                                android:layout_height="110dp"-->
-                            <!--                                android:src="@drawable/contentpicture3">-->
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="110dp"
+                                android:id="@+id/image6"
+                                android:src="@drawable/contentpicture3">
 
-                            <!--                            </ImageView>-->
-
-                            <kr.co.prnd.YouTubePlayerView
-                                android:id="@+id/youtubeView3"
-                                android:layout_width="344dp"
-                                android:layout_height="200dp"
-                                app:fragment="com.example.test2.ContentsFragment"
-                                app:videoId="tzJbwflDPhY" />
+                            </ImageView>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/string5"
-                                android:textSize="20sp"></TextView>
+                                android:textSize="20sp">
+                            </TextView>
 
 
                         </LinearLayout>

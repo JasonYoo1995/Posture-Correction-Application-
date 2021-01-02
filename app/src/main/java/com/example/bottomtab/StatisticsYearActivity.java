@@ -1,4 +1,4 @@
-package com.example.bottomtab.statistics;
+package com.example.bottomtab;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bottomtab.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;

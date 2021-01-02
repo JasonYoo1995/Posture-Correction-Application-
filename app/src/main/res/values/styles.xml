@@ -7,6 +7,4 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="TwoTheme" parent="@android:style/Theme.Holo.Light" >
-    </style>
 </resources>

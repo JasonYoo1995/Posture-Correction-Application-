@@ -1,16 +1,12 @@
-package com.example.bottomtab.etc;
+package com.example.bottomtab;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.bottomtab.R;
 
 import org.json.JSONObject;
 
@@ -25,39 +21,47 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class LoginActivity extends AppCompatActivity {
-    EditText IDText, PWText;
+public class SignUpActivity extends AppCompatActivity {
+    EditText IDText, PWText, nameText;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_login);
+        setContentView(R.layout.layout_sign_up);
 
-        IDText = findViewById(R.id.sign_in_id);
-        PWText = findViewById(R.id.sign_in_pw);
+        IDText = findViewById(R.id.sign_up_id);
+        PWText = findViewById(R.id.sign_up_pw);
+        nameText = findViewById(R.id.sign_up_name);
 
-        IDText.setText("Jason");
-        PWText.setText("a");
-
-        findViewById(R.id.layout_sign_up_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { // 계정 생성 버튼 누르면 다음 화면
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.layout_sign_in_btn).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.sign_up_cancel_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JSONTask task = new JSONTask();
-                Data data[] = {new Data("id", IDText.getText().toString()), new Data("pw", PWText.getText().toString())};
-                task.setData(data);
-                task.execute("http://3.92.215.113:4001/sign_in");//AsyncTask 시작시킴
+                finish();
             }
         });
-    }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return true;
+        findViewById(R.id.create_account_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(IDText.getText().toString().equals("")){
+                    makeToast("아이디를 입력하세요");
+                    return;
+                }
+                else if(PWText.getText().toString().equals("")){
+                    makeToast("비밀번호를 입력하세요");
+                    return;
+                }
+                else if(nameText.getText().toString().equals("")){
+                    makeToast("이름을 입력하세요");
+                    return;
+                }
+
+                JSONTask task = new JSONTask();
+                Data data[] = {new Data("id", IDText.getText().toString()),
+                        new Data("pw", PWText.getText().toString()),
+                        new Data("name", nameText.getText().toString())};
+                task.setData(data);
+                task.execute("http://3.92.215.113:4001/sign_up");//AsyncTask 시작시킴
+            }
+        });
     }
 
     private void makeToast(String string){
@@ -134,15 +138,13 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             if(result.equals("-1")){
-                makeToast(getResources().getString(R.string.not_correct));
+                makeToast("아이디가 중복됩니다");
             }
             else{
-                makeToast(getResources().getString(R.string.log_in_done));
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                intent.putExtra("user_id", IDText.getText().toString());
-                startActivity(intent);
+                makeToast("회원 가입이 되셨습니다");
                 finish();
             }
         }
     }
 }
+

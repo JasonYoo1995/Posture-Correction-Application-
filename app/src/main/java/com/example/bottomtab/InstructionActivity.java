@@ -1,4 +1,4 @@
-package com.example.bottomtab.etc;
+package com.example.bottomtab;
 
 
 import android.app.Activity;
@@ -9,8 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
-
-import com.example.bottomtab.R;
 
 public class InstructionActivity extends Activity {
     ViewFlipper viewFlipper; // 화면 전환 매니저

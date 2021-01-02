@@ -1,4 +1,4 @@
-package com.example.bottomtab.etc;
+package com.example.bottomtab;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-
-import com.example.bottomtab.R;
 
 public class OptionDialog extends Dialog {
     ImageView helpButton, helpBoxAlert, exitButton;

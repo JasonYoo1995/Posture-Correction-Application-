@@ -2,13 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bottomtab">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
 
     <application
         android:usesCleartextTraffic="true"
@@ -19,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".etc.InitialActivity">
+            android:name=".InitialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,56 +25,52 @@
         </activity>
 
         <activity
-            android:name=".etc.LoginActivity"
+            android:name=".LoginActivity"
             android:label="@string/sign_in">
         </activity>
 
         <activity
-            android:name=".etc.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name">
         </activity>
 
         <activity
-            android:name=".etc.ProfileActivity"
+            android:name=".ProfileActivity"
             android:label="@string/profile">
         </activity>
         <activity
-            android:name=".etc.DeviceInformationActivity"
+            android:name=".DeviceInformationActivity"
             android:label="@string/device_information">
         </activity>
         <activity
-            android:name=".etc.InstructionActivity"
+            android:name=".InstructionActivity"
             android:label="@string/instruction">
         </activity>
         <activity
-            android:name=".etc.CustomerServiceActivity"
+            android:name=".CustomerServiceActivity"
             android:windowSoftInputMode="adjustPan"
             android:label="@string/customer_service">
         </activity>
         <activity
-            android:name=".etc.FriendActivity"
+            android:name=".FriendActivity"
             android:label="@string/friend">
         </activity>
         <activity
-            android:name=".etc.SignUpActivity"
+            android:name=".SignUpActivity"
             android:label="@string/sign_up">
         </activity>
         <activity
-            android:name=".statistics.StatisticsDayActivity">
+            android:name=".StatisticsDayActivity">
         </activity>
         <activity
-            android:name=".statistics.StatisticsWeekActivity">
+            android:name=".StatisticsWeekActivity">
         </activity>
         <activity
-            android:name=".statistics.StatisticsMonthActivity">
+            android:name=".StatisticsMonthActivity">
         </activity>
         <activity
-            android:name=".statistics.StatisticsYearActivity">
+            android:name=".StatisticsYearActivity">
         </activity>
-
-        <activity android:name=".bluetooth.DeviceControlActivity"/>
-        <activity android:name=".bluetooth.DeviceScanActivity"/>
-        <service android:name=".bluetooth.BluetoothLeService" android:enabled="true"/>
     </application>
 
 </manifest>
