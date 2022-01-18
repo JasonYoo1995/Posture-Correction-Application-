@@ -31,7 +31,7 @@
         → Joint Team Meeting, Joint Class에서 실시간 영어 회의 및 영어 발표
 - **제작 문서**
     
-    [자세 교정 앱 문서](https://www.notion.so/42b5c21c6af0473790978be3eca71ffb)
+    [자세 교정 앱 문서](https://jasonyoo95.notion.site/42b5c21c6af0473790978be3eca71ffb)
     
 - **어려웠던 점**
     - 블루투스를 통해 SW와 HW를 연결하는 샘플 코드를 우리 앱에 맞게 수정해서 구동시키는 것이 굉장히 어려웠습니다.
